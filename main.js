@@ -7,7 +7,7 @@ const client = new Discord.Client({
 
 const prefix = 'a-';
 
-const fs = require('fs');
+/*const fs = require('fs');
 const { send } = require('process');
 
 client.commands = new Discord.Collection();
@@ -17,7 +17,7 @@ for (const file of commandfiles) {
     const command = require(`./commands/${file}`);
 
     client.commands.set(command.name, command)
-}
+}*/
 
 client.on('ready', () => {
     console.log('The Official ArK Bot is online!');

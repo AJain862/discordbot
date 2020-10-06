@@ -23,7 +23,7 @@ client.on('ready', () => {
     console.log('The Official ArK Bot is online!');
 });
 
-client.on('message', async (msg) => {
+/*client.on('message', async (msg) => {
     if (msg.content === 'a-lock') {
         if (!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send('Sorry, you do not have permissiont to use this command!')
         if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
@@ -53,7 +53,7 @@ client.on('message', async (msg) => {
         })
     }
 
-})
+})*/
 
 
 

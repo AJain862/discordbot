@@ -92,24 +92,24 @@ client.on('message', message => {
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+    const args = message.content.slice(prefix.length).split(/ +/g);
+    const command = args.shift().toLocaleLowerCase();
 
 
     if (command === 'ping') {
-        client.commands.get('ping').execute(message, args);
+        message.channel.send('PONG!');
     }
     else if (command == 'youtube') {
-        client.commands.get('youtube').execute(message, args);
+        message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UCDpMIB8DvcPxSprCpWxlhbw');
 
     }
 
     else if (command == 'nitro') {
-        client.commands.get('nitro').execute(message, args);
+        message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb');
     }
 
     else if (command == 'nitroclassic') {
-        client.commands.get('nitroclassic').execute(message, args);
+        message.channel.send('https://discord.gift/bRJCprbeXrsXbA96')
     }
     else if (command == 'help') {
         const help = new Discord.MessageEmbed()

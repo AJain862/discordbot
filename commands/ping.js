@@ -1,4 +1,4 @@
-const { Message } = require("discord.js")
+/*const { Message } = require("discord.js")
 
 module.exports = {
     name: 'ping',
@@ -6,4 +6,4 @@ module.exports = {
     execute(Message, args){
         Message.channel.send('pong')
     }
-}
+}*/

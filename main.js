@@ -109,40 +109,13 @@ client.on('message', async(message) => {
     
 
 
-    if (command === 'ping') {
-        message.channel.send(`PONG! ${client.ws.ping}ms`);
-    }
-    else if (command == 'youtube') {
-        message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UCDpMIB8DvcPxSprCpWxlhbw');
+   
+     
 
-    }
-
-    else if (command == 'nitro') {
-        message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb');
-    }
-
-    else if (command == 'nitroclassic') {
-        message.channel.send('https://discord.gift/bRJCprbeXrsXbA96')
-    }
-    else if (command == 'help') {
-        const help = new Discord.MessageEmbed()
-            .setColor(0x6509ed)
-            .setTitle('Help Requested')
-            .setDescription('testing...')
-            .setAuthor(message.author.username)
-            .setDescription('Help is on its way.')
-            .setTimestamp()
-            .addField('this embed works i guess')
-            .setFooter('i hope this helped you')
-
-
-
-
-        try {
-            message.author.send(help);
-        } catch {
-            message.reply(`Sorry @${message.author.username} I cannot do this. Make sure your dm's are public.`);
-        }
+    
+    
+  if (command == 'help') {
+        
 
     } else
         if (command === 'ban') {

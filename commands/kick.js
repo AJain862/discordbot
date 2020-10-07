@@ -1,24 +1,27 @@
 exports.run = async (client, message, args) => {
-    if (message.member.hasPermission("KICK_MEMBERS")) {
-        const userKick = message.mentions.users.first()
+    command(client, 'kick', (message) => {
+        const { member, mentions } = message
 
-        if (userKick) {
-            var member = message.guild.member(userKick);
+        const tag = `<@${member.id}>`
 
-            if (member) {
-                member.kick('you have been kicked for breaking the rules').then(() => {
-                    message.reply(`kicked user ${userKick.tag}!`);
-                }).catch(err => {
-                    message.reply('I was not able to kick that user.')
-                    console.log(err);
-                })
+        if (
+            member.hasPermission('ADMINISTRATOR') ||
+            member.hasPermission('KICK_MEMBERS')
+        ) {
+            const target = mentions.users.first()
+            if (target) {
+                const targetMember = message.guild.members.cache.get(target.id)
+                targetMember.kick()
+                message.channel.send(`${tag} That user has kicked`)
             } else {
-                message.reply('that user is not in the server.')
+                message.channel.send(`${tag} Please specify someone to kick.`)
             }
         } else {
-            message.reply('you need to state the person you want to kick.')
+            message.channel.send(
+                `${tag} You do not have permission to use this command.`
+            )
         }
-    } else {
-        message.reply('Hey you cannot use that.')
-    }
+    })
+
+
 }

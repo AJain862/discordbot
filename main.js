@@ -234,8 +234,8 @@ client.on('message', message => {
 
                 if(!person) return message.reply('could not find that user.');
 
-                let mainrole = message.guild.roles.find(role => role.name === 'guest')
-                let muterole = message.guild.roles.find(role => role.name === 'Muted')
+                let mainrole = message.guild.roles.fetch(role => role.name === 'guest')
+                let muterole = message.guild.roles.fetch(role => role.name === 'Muted')
                 let time = args[1];
 
                // if (mainrole) {

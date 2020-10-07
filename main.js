@@ -21,7 +21,7 @@ for (const file of commandfiles) {
 
 client.on('ready', () => {
     console.log('The Official ArK Bot is online!');
-    client.user.setActivity('over server,', { type: "WATCHING"})
+    client.user.setActivity('Command is a-help', { type: "CUSTOM_STATUS"})
         .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
         .catch(console.error);
 });

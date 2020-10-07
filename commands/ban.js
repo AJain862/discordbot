@@ -1,28 +1,26 @@
+
 exports.run = async (client, message, args) => {
+    if (message.member.hasPermission("BAN_MEMBERS")) {
+        const userBan = message.mentions.users.first();
 
+        if (userBan) {
+            var member = message.guild.member(userBan);
 
+            if (member) {
+                member.ban({
+                    reason: 'you broke the rules.'
+                }).then(() => {
+                    message.reply(`${userBan.tag} was banned from the server.`)
 
-    command(client, 'ban', (message) => {
-        const { member, mentions } = message
-
-        const tag = `<@${member.id}>`
-
-        if (
-            member.hasPermission('ADMINISTRATOR') ||
-            member.hasPermission('BAN_MEMBERS')
-        ) {
-            const target = mentions.users.first()
-            if (target) {
-                const targetMember = message.guild.members.cache.get(target.id)
-                targetMember.ban()
-                message.channel.send(`${tag} That user has been`)
+                })
             } else {
-                message.channel.send(`${tag} Please specify someone to ban.`)
+                message.reply('that user is not in the server.');
+
             }
         } else {
-            message.channel.send(
-                `${tag} You do not have permission to use this command.`
-            )
+            message.reply('you need to state a user to ban.')
         }
-    })
+    } else {
+        message.reply('Hey you cannot use that.')
+    }
 }

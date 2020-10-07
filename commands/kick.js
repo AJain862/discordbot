@@ -12,6 +12,7 @@ exports.run = async (client, message, args) => {
                     message.reply('I was not able to kick that user.')
                     console.log(err);
                 })
+                
             } else {
                 message.reply('that user is not in the server.')
             }

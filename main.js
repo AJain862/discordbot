@@ -26,7 +26,7 @@ client.on('ready', () => {
         .catch(console.error);
     client.user.setStatus('dnd')
         .then(console.log)
-        .catch(console.error)
+        .catch(console.error);
 });
 
 /*client.on('message', async (msg) => {

@@ -190,9 +190,9 @@ client.on('message', message => {
             } else {
                 message.reply('Hey you cannot use that.')
             }
-        }
-        switch (args[0]) {
-            case 'mute':
+        }else
+        if (command === 'mute') {
+            
             let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
             if(!person) return message.reply('Could not find that user');
 
@@ -219,7 +219,7 @@ client.on('message', message => {
 
 
 
-            break;
+            
         }
         
         

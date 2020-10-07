@@ -21,10 +21,10 @@ for (const file of commandfiles) {
 
 client.on('ready', () => {
     console.log('The Official ArK Bot is online!');
-    client.user.setActivity('a-help', { type: "PLAYING"})
+    client.user.setActivity('a-help', { type: "PLAYING" })
         .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
         .catch(console.error);
-    
+
 })
 
 /*client.on('message', async (msg) => {
@@ -89,170 +89,128 @@ client.on('guildMemberAdd', member => {
 
 
 
-client.on('message', async(message) => {
+client.on('message', async (message) => {
 
-    if(message.author.bot) return;
-    if(!message.guild) return;
+    if (message.author.bot) return;
+    if (!message.guild) return;
 
     var prefix = 'a-';
-    if(!message.content.toLowerCase().startsWith(prefix)) return;
+    if (!message.content.toLowerCase().startsWith(prefix)) return;
 
     var args = message.content.split(" ");
     var cmd = args.shift().slice(prefix.length).toLowerCase();
     try {
         var file = require(`./commands/${cmd}.js`);
         file.run(client, message, args);
-    } catch(err) {
+    } catch (err) {
         console.warn(err);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     
+       
 
 
-   
+
+
+    
      
-
+        
     
-    
-  if (command == 'help') {
+
+
+
+
+
+
+
+
+
+    /*else
+    if (command === 'mute') {
         
+        let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
+        if(!person) return message.reply('Could not find that user');
 
-    } else
-        if (command === 'ban') {
-            if (message.member.hasPermission("BAN_MEMBERS")) {
-                const userBan = message.mentions.users.first();
+        let mainrole = message.guild.roles.find(role => role.name === "guest" );
+        let muterole = message.guild.roles.find(role => role.name === "Muted" );
 
-                if (userBan) {
-                    var member = message.guild.member(userBan);
+        if(!muterole) return message.reply('could not find the mute role');
 
-                    if (member) {
-                        member.ban({
-                            reason: 'you broke the rules.'
-                        }).then(() => {
-                            message.reply(`${userBan.tag} was banned from the server.`)
+        let time = args[2];
 
-                        })
-                    } else {
-                        message.reply('that user is not in the server.');
-
-                    }
-                } else {
-                    message.reply('you need to state a user to ban.')
-                }
-            } else {
-                message.reply('Hey you cannot use that.')
-            }
-
-
-
-
-        }
-        else if (command == 'kick') {
-            if (message.member.hasPermission("KICK_MEMBERS")) {
-                const userKick = message.mentions.users.first()
-
-                if (userKick) {
-                    var member = message.guild.member(userKick);
-
-                    if (member) {
-                        member.kick('you have been kicked for breaking the rules').then(() => {
-                            message.reply(`kicked user ${userKick.tag}!`);
-                        }).catch(err => {
-                            message.reply('I was not able to kick that user.')
-                            console.log(err);
-                        })
-                    } else {
-                        message.reply('that user is not in the server.')
-                    }
-                } else {
-                    message.reply('you need to state the person you want to kick.')
-                }
-            } else {
-                message.reply('Hey you cannot use that.')
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*else
-        if (command === 'mute') {
+        if(!time){
+            return message.reply('you did not give a time, plz give one k?');
             
-            let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
-            if(!person) return message.reply('Could not find that user');
+        }
+        person.removeRole(mainrole.id);
+        person.addRole(muterole.id);
 
-            let mainrole = message.guild.roles.find(role => role.name === "guest" );
-            let muterole = message.guild.roles.find(role => role.name === "Muted" );
+        message.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`);
 
-            if(!muterole) return message.reply('could not find the mute role');
 
-            let time = args[2];
 
+
+
+
+
+
+        
+    }*/
+
+
+
+
+
+
+    /*if(command === 'mute'){
+        if (message.member.hasPermission('MUTE_MEMBERS')){
+
+            let person = message.guild.member(message.mentions.users.first() || message.guild.members.args[1])
+
+            if(!person) return message.reply('could not find that user.');
+
+            let mainrole = message.guild.roles.cache.find(role => role.name === 'guest')
+            let muterole = message.guild.roles.cache.find(role => role.name === 'Muted')
+            let time = args[1];
+        
+
+            if (mainrole) {
+                message.
+            } else
             if(!time){
-                return message.reply('you did not give a time, plz give one k?');
-                
+                return message.reply('plz enter a time to mute the user for.');
+
             }
-            person.removeRole(mainrole.id);
-            person.addRole(muterole.id);
-
-            message.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`);
-
-
-
-
-
-
-
+            person.(mainrole.id);
+            person.permissions.add.role(muterole.id);
+            message.channel.send(`@${person.user.username} has been muted for ${ms(ms(time))}`);
+            setTimeout(function () {
+                person.permissions.add.role(mainrole.id);
+                person.permissions.remove.role(muterole.id);
+                message.channel.send(`@${person.user.username} has been unmuted.`)
+            }, ms(time));
 
             
-        }*/
-        
-        
-        
-        
-        
-        //else
-        /*if(command === 'mute'){
-            if (message.member.hasPermission('MUTE_MEMBERS')){
+            
 
-                let person = message.guild.member(message.mentions.users.first() || message.guild.members.args[1])
+            
 
-                if(!person) return message.reply('could not find that user.');
-
-                let mainrole = message.guild.roles.fetch(role => role.name === 'guest')
-                let muterole = message.guild.roles.fetch(role => role.name === 'Muted')
-                let time = args[1];
-
-                if (mainrole) {
-                    message.
-                }else
-                if(!time){
-                    return message.reply('plz enter a time to mute the user for.');
-
-                }
-                person.permissions.remove.role(mainrole.id);
-                person.permissions.add.role(muterole.id);
-                message.channel.send(`@${person.user.username} has been muted for ${ms(ms(time))}`);
-                setTimeout(function () {
-                    person.permissions.add.role(mainrole.id);
-                    person.permissions.remove.role(muterole.id);
-                    message.channel.send(`@${person.user.username} has been unmuted.`)
-                }, ms(time));
-
-                
-                
-
-                
-
-            } else {
-                message.reply('you don\'t have permession to use this command.')
-            }
-        }*/
+        } else {
+            message.reply('you don\'t have permession to use this command.')
+        }
+    }*/
 
 
 })

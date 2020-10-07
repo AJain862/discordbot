@@ -6,6 +6,8 @@ const client = new Discord.Client({
 
 
 const prefix = 'a-';
+const ms = require('ms');
+
 
 /*const fs = require('fs');
 const { send } = require('process');
@@ -24,10 +26,7 @@ client.on('ready', () => {
     client.user.setActivity('a-help', { type: "PLAYING"})
         .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
         .catch(console.error);
-    client.user.setStatus('dnd')
-        .then(console.log)
-        .catch(console.error);
-   
+    
 })
 
 /*client.on('message', async (msg) => {
@@ -192,6 +191,68 @@ client.on('message', message => {
                 message.reply('Hey you cannot use that.')
             }
         }
+        switch (args[0]) {
+            case 'mute':
+            let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
+            if(!person) return message.reply('Could not find that user');
+
+            let mainrole = message.guild.roles.find(role => role.name === "guest" );
+            let muterole = message.guild.roles.find(role => role.name === "Muted" );
+
+            if(!muterole) return message.reply('could not find the mute role');
+
+            let time = args[2];
+
+            if(!time){
+                return message.reply('you did not give a time, plz give one k?');
+                
+            }
+            person.removeRole(mainrole.id);
+            person.addRole(muterole.id);
+
+            message.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`);
+
+
+
+
+
+
+
+
+            break;
+        }
+        
+        
+        
+        
+        
+        //else
+        /*if(command === 'mute'){
+            if (message.member.hasPermission('MUTE_MEMBERS')){
+
+                let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]))
+
+                if(!person) return message.reply('could not find that user.');
+
+                let mainrole = message.guild.roles.find(role => role.name === 'Member')
+                let muterole = message.guild.roles.find(role => role.name === 'Muted')
+                let time = args[1];
+
+                if (mainrole) {
+                    message.guild.defaultRole.setPermisions(0);
+                }
+
+                if (!muterole) {
+                    message.channel.send('This server does not include a mute role so i will create one k?');
+                    console.log('this server has no mute role so i am creating one')
+                    message.guild.createRole
+
+                }
+
+            } else {
+                message.reply('you don\'t have permession to use this command.')
+            }
+        }*/
 
 
 })

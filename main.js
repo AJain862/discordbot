@@ -190,7 +190,7 @@ client.on('message', message => {
             } else {
                 message.reply('Hey you cannot use that.')
             }
-        }else
+        }/*else
         if (command === 'mute') {
             
             let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
@@ -220,39 +220,39 @@ client.on('message', message => {
 
 
             
-        }
+        }*/
         
         
         
         
         
-        //else
-        /*if(command === 'mute'){
+        else
+        if(command === 'mute'){
             if (message.member.hasPermission('MUTE_MEMBERS')){
 
-                let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]))
+                let person = message.guild.member(message.mentions.users.first() || message.guild.members.args[1])
 
                 if(!person) return message.reply('could not find that user.');
 
-                let mainrole = message.guild.roles.find(role => role.name === 'Member')
+                let mainrole = message.guild.roles.find(role => role.name === 'guest')
                 let muterole = message.guild.roles.find(role => role.name === 'Muted')
                 let time = args[1];
 
-                if (mainrole) {
-                    message.guild.defaultRole.setPermisions(0);
-                }
+               // if (mainrole) {
+                  //  message.guild.defaultRole.setPermisions(0);
+                //}
 
-                if (!muterole) {
+                /*if (!muterole) {
                     message.channel.send('This server does not include a mute role so i will create one k?');
                     console.log('this server has no mute role so i am creating one')
-                    message.guild.createRole
+                
 
-                }
+                }*/
 
             } else {
                 message.reply('you don\'t have permession to use this command.')
             }
-        }*/
+        }
 
 
 })

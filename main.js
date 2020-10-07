@@ -24,8 +24,11 @@ client.on('ready', () => {
     client.user.setActivity('a-help', { type: "PLAYING"})
         .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
         .catch(console.error);
+    client.user.setStatus('dnd')
+        .then(console.log)
+        .catch(console.error);
    
-});
+})
 
 /*client.on('message', async (msg) => {
     if (msg.content === 'a-lock') {

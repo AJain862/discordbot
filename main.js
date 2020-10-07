@@ -22,7 +22,7 @@ for (const file of commandfiles) {
 client.on('ready', () => {
     console.log('The Official ArK Bot is online!');
     client.user.setActivity('a-help', { type: "PLAYING"})
-        .then(presence => console.log(`Activity set to Do not disturb`))
+        .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
         .catch(console.error);
    client.user.setStatus('dnd')
         .then(console.log)

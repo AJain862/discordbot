@@ -238,16 +238,26 @@ client.on('message', message => {
                 let muterole = message.guild.roles.fetch(role => role.name === 'Muted')
                 let time = args[1];
 
-               // if (mainrole) {
-                  //  message.guild.defaultRole.setPermisions(0);
-                //}
+                if (mainrole) {
+                    message.guild.defaultRole.setPermisions(0);
+                }else
+                if(!time){
+                    return message.reply('plz enter a time to mute the user for.');
 
-                /*if (!muterole) {
-                    message.channel.send('This server does not include a mute role so i will create one k?');
-                    console.log('this server has no mute role so i am creating one')
+                }
+                person.permissions.remove.role(mainrole.id);
+                person.permissions.add.role(muterole.id);
+                message.channel.send(`@${person.user.username} has been muted for ${ms(ms(time))}`);
+                setTimeout(function () {
+                    person.permissions.add.role(mainrole.id);
+                    person.permissions.remove.role(muterole.id);
+                    message.channel.send(`@${person.user.username} has been unmuted.`)
+                }, ms(time));
+
+                
                 
 
-                }*/
+                
 
             } else {
                 message.reply('you don\'t have permession to use this command.')

@@ -1,11 +1,9 @@
 const Discord = require('discord.js');
 
-const client = new Discord.Client({
-    disableMentions: 'everyone'
-})
+const client = new Discord.Client();
 
 
-const prefix = 'a-';
+
 const ms = require('ms');
 
 
@@ -91,19 +89,28 @@ client.on('guildMemberAdd', member => {
 
 
 
-client.on('message', message => {
+client.on('message', async(message) => {
 
+    if(message.author.bot) return;
+    if(!message.guild) return;
 
+    var prefix = 'a-';
+    if(!message.content.toLowerCase().startsWith(prefix)) return;
 
+    var args = message.content.split(" ");
+    var cmd = args.shift().slice(prefix.length).toLowerCase();
+    try {
+        var file = require(`./commands/${cmd}.js`);
+        file.run(client, message, args);
+    } catch(err) {
+        console.warn(err);
+    }
 
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).split(/ +/g);
-    const command = args.shift().toLocaleLowerCase();
+    
 
 
     if (command === 'ping') {
-        message.channel.send('PONG!');
+        message.channel.send(`PONG! ${client.ws.ping}ms`);
     }
     else if (command == 'youtube') {
         message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UCDpMIB8DvcPxSprCpWxlhbw');
@@ -190,7 +197,17 @@ client.on('message', message => {
             } else {
                 message.reply('Hey you cannot use that.')
             }
-        }/*else
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*else
         if (command === 'mute') {
             
             let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
@@ -226,8 +243,8 @@ client.on('message', message => {
         
         
         
-        else
-        if(command === 'mute'){
+        //else
+        /*if(command === 'mute'){
             if (message.member.hasPermission('MUTE_MEMBERS')){
 
                 let person = message.guild.member(message.mentions.users.first() || message.guild.members.args[1])
@@ -239,7 +256,7 @@ client.on('message', message => {
                 let time = args[1];
 
                 if (mainrole) {
-                    message.guild.defaultRole.setPermisions(0);
+                    message.
                 }else
                 if(!time){
                     return message.reply('plz enter a time to mute the user for.');
@@ -262,7 +279,7 @@ client.on('message', message => {
             } else {
                 message.reply('you don\'t have permession to use this command.')
             }
-        }
+        }*/
 
 
 })

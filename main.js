@@ -121,11 +121,15 @@ client.on('ready', () => {
   })
 
   command(client, ['cc', 'clearchannel'], (message) => {
-    if (message.member.hasPermission('ADMINISTRATOR')) {
-      message.channel.messages.fetch().then((results) => {
-        message.channel.bulkDelete(results)
-      })
-    }
+      if(member.hasPermission("AMINISTRATOR")) {
+        if (message.member.hasPermission('ADMINISTRATOR')) {
+            message.channel.messages.fetch().then((results) => {
+              message.channel.bulkDelete(results)
+            })
+          }
+
+      }
+    
   })
 
   command(client, 'nitro', (message) => {

@@ -9,6 +9,50 @@ const command = require('./command')
 client.on('ready', () => {
   console.log('The client is ready!')
 
+  const tag = `<@${member.id}>`
+
+  command(client, 'ban', message => {
+      const { member, mentions } = message
+      if(
+          member.hasPermission('ADMINISTRATOR') || 
+          member.hasPermission('BAN_MEMBERS')
+          ) {
+              const target = mentions.users.first()
+              if (target) {
+                  const targetMember = message.guild.members.cache.get(target.id)
+                  targetMember.ban()
+                  message.channel.send(`${tag} That user has been banned.`)
+
+              } else {
+                  message.channel.send(`${tag} Please specify someone to ban `)
+              }
+
+      }else {
+          message.channel.send(`${tag} You do not have permission to use this command`)
+      }
+  })
+
+  command(client, 'kick', message => {
+    const { member, mentions } = message
+    if(
+        member.hasPermission('ADMINISTRATOR') || 
+        member.hasPermission('KICK_MEMBERS')
+        ) {
+            const target = mentions.users.first()
+            if (target) {
+                const targetMember = message.guild.members.cache.get(target.id)
+                targetMember.kick()
+                message.channel.send(`${tag} That user has been kicked.`)
+
+            } else {
+                message.channel.send(`${tag} Please specify someone to kick `)
+            }
+
+    }else {
+        message.channel.send(`${tag} You do not have permission to use this command`)
+    }
+})
+
   const { prefix } = config
 
   
@@ -85,6 +129,9 @@ client.on('ready', () => {
   command(client, 'nitro', (message) => {
       message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb')
   })
+  command(client, 'youtube', (message) => {
+    message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UC49qUd_YFnpkx_-A7NVSKaA?view_as=subscriber')
+})
 
   
 })

@@ -5,6 +5,7 @@ const config = require('./config.json')
 const command = require('./command')
 const firstMessage = require('./first-message')
 
+
 client.on('ready', () => {
   console.log('The client is ready!')
 
@@ -18,6 +19,8 @@ client.on('ready', () => {
     const icon = guild.iconURL()
 
     console.log(name, region, memberCount, icon)
+
+    console.log(owner.user.tag)
   })
 
   command(client, ['ping', 'test'], (message) => {

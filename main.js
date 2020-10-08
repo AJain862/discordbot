@@ -9,6 +9,15 @@ const command = require('./command')
 client.on('ready', () => {
   console.log('The client is ready!')
 
+  const { prefix } = config
+
+  client.user.setStatus('dnd')
+  client.user.setPresence({
+      activity: {
+          name: `Use ${prefix}help`
+      }
+  })
+
   command(client, 'help', message => {
       message.channel.send(`
       These are my supported commands:
@@ -73,17 +82,7 @@ client.on('ready', () => {
     }
   })
 
-  command(client, 'status', (message) => {
-    const content = message.content.replace('status ', '')
-    // "!status hello world" -> "hello world"
-
-    client.user.setPresence({
-      activity: {
-        name: content,
-        type: 0,
-      },
-    })
-  })
+  
 })
 
 client.login(process.env.token);

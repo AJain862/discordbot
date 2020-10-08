@@ -7,7 +7,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 const config = require('./config.json')
-
+const command = require('./command')
 const welcome = require('./welcome')
 const { dir } = require('console')
 

@@ -19,8 +19,20 @@ client.on('ready', () => {
     const icon = guild.iconURL()
 
     const embed = new Discord.MessageEmbed()
-        .setTitle(`Server Infor for ${name}`)
+        .setTitle(`Server Info for "${name}"`)
         .setThumbnail(icon)
+        .addFields(
+            {
+                name: 'Members',
+                value: memberCount,
+            },
+            {
+                name: 'Owner',
+                value: owner.user.tag,
+            },
+            
+            
+        )
 
     message.channel.send(embed)
     

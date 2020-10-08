@@ -9,10 +9,11 @@ const command = require('./command')
 client.on('ready', () => {
   console.log('The client is ready!')
 
-  const tag = `<@${member.id}>`
+  
 
   command(client, 'ban', message => {
       const { member, mentions } = message
+      const tag = `<@${member.id}>`
       if(
           member.hasPermission('ADMINISTRATOR') || 
           member.hasPermission('BAN_MEMBERS')
@@ -34,6 +35,7 @@ client.on('ready', () => {
 
   command(client, 'kick', message => {
     const { member, mentions } = message
+    const tag = `<@${member.id}>`
     if(
         member.hasPermission('ADMINISTRATOR') || 
         member.hasPermission('KICK_MEMBERS')

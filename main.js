@@ -66,12 +66,17 @@ client.on('ready', () => {
 
   command(client, 'help', message => {
       message.channel.send(`
-      These are my supported commands:
+    These are my supported commands:
 
-      **a-help** - Displays the help menu
-      **a-serverinfo** - Diplays server info
-      **a-server** - Displays which servers I am in
-      **a-ping** - Displays your ping
+    **a-help** - Displays the help menu
+    **a-serverinfo** - Diplays server info
+    **a-server** - Displays which servers I am in
+    **a-ping** - Displays your ping
+    **a-cc** - Bulk Deletes Messages
+    **a-kick** - Kicks specified user
+    **a-ban** - Bans specified user
+    **a-nitro** - GIVES YOU A NITRO
+    **a-youtube** - Gives you content to watch and subscribe to
        
       
       

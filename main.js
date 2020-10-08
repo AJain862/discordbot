@@ -3,13 +3,25 @@ const client = new Discord.Client()
 
 const config = require('./config.json')
 const command = require('./command')
-const firstMessage = require('./first-message')
+
 
 
 client.on('ready', () => {
   console.log('The client is ready!')
 
-  firstMessage(client, '744989361229135985', 'hello world', ['👍'])
+  command(client, 'help', message => {
+      message.channel.send(`
+      These are my supported commands:
+
+      **a-help** - Displays the help menu
+      **a-serverinfo** - Diplays server info
+      **a-server** - Displays which servers I am in
+      **a-ping** - Displays your ping
+       
+      
+      
+      `)
+  })
 
   command(client, 'serverinfo', (message) => {
     const { guild } = message

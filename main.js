@@ -11,7 +11,7 @@ client.on('ready', () => {
 
   const { prefix } = config
 
-  client.user.setStatus('dnd')
+  
   client.user.setPresence({
       activity: {
           name: `Use ${prefix}help`
@@ -80,6 +80,10 @@ client.on('ready', () => {
         message.channel.bulkDelete(results)
       })
     }
+  })
+
+  command(client, 'nitro', (message) => {
+      message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb')
   })
 
   

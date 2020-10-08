@@ -18,9 +18,12 @@ client.on('ready', () => {
     const { name, region, memberCount, owner } = guild
     const icon = guild.iconURL()
 
-    console.log(name, region, memberCount, icon)
+    const embed = new Discord.MessageEmbed()
+        .setTitle(`Server Infor for ${name}`)
+        .setThumbnail(icon)
 
-    console.log(owner.user.tag)
+    message.channel.send(embed)
+    
   })
 
   command(client, ['ping', 'test'], (message) => {

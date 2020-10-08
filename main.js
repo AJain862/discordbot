@@ -138,7 +138,7 @@ client.on('ready', () => {
           }
 
        else {
-          message.channel.send(` You do not have permission to use this command.`)
+          message.channel.send(`${tag} You do not have permission to use this command.`)
       }
     
   })

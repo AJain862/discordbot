@@ -15,7 +15,7 @@ client.on('ready', () => {
     const { guild } = message
     //console.log(guild)
 
-    const { name, region, memberCount } = guild
+    const { name, region, memberCount, owner } = guild
     const icon = guild.iconURL()
 
     console.log(name, region, memberCount, icon)

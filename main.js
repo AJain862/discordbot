@@ -122,6 +122,7 @@ client.on('ready', () => {
 
   command(client, ['cc', 'clearchannel'], (message) => {
     const { member } = message
+    const tag = `<@${member.id}>`
   
       
         if (message.member.hasPermission('ADMINISTRATOR')) {
@@ -131,7 +132,7 @@ client.on('ready', () => {
           }
 
        else {
-          message.channel.send(` You do not have permission to use this command.`)
+          message.channel.send(`${tag} You do not have permission to use this command.`)
       }
     
   })

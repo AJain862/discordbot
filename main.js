@@ -126,7 +126,8 @@ client.on('ready', () => {
   })
 
   command(client, ['cc', 'clearchannel'], (message) => {
-    const { member } = message
+    const { member, mentions } = message
+    
     const tag = `<@${member.id}>`
   
       

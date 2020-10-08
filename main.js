@@ -10,8 +10,8 @@ client.on('ready', () => {
 
   firstMessage(client, '744989361229135985', 'hello world', ['👍'])
 
-  command(client, ['serverinfo'], (message) => {
-    message.channel.send('Coming Soon')
+  command(client, 'serverinfo', (message) => {
+    const { guild } = message
     console.log(guild)
   })
 

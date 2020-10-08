@@ -30,7 +30,10 @@ client.on('ready', () => {
                 name: 'Owner',
                 value: owner.user.tag,
             },
-            
+            {
+                name: 'Region',
+                value: region,
+            },
             
         )
 

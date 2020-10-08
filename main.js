@@ -121,6 +121,7 @@ client.on('ready', () => {
   })
 
   command(client, ['cc', 'clearchannel'], (message) => {
+    const { member } = message
   
       if(member.hasPermission("AMINISTRATOR")) {
         if (message.member.hasPermission('ADMINISTRATOR')) {

@@ -12,6 +12,7 @@ client.on('ready', () => {
 
   command(client, ['serverinfo'], (message) => {
     message.channel.send('Coming Soon')
+    console.log(guild)
   })
 
   command(client, ['ping', 'test'], (message) => {

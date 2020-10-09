@@ -18,7 +18,9 @@ module.exports = {
 
             let replyText = 'Invites:'
 
-            for (const invite in inviteCounter) {
+            const sortedInvites = Object.keys().sort((a, b) => inviteCounter[b] - inviteCounter[a])
+
+            for (const invite of sortedInvites) {
                 const count = inviteCounter[invite]
                 replyText += `\n${invite} has invited ${count} member(s)!`
             }

@@ -25,7 +25,7 @@ module.exports = (client) => {
     firstMessage(client, channelId, emojiText, reactions )
 
     const handleReaction = (reaction,user,add) => {
-        if (user.id === '761283809144471552') {
+        if (user.id === '765356808172208152') {
             return
         }
         const emoji = reaction._emoji.name

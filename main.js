@@ -20,7 +20,7 @@ const roleClaim = require('./commands/role-claim')
 client.on('ready', async () => {
   console.log('The client is ready!')
 
-  
+  roleClaim(client)
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
@@ -42,7 +42,6 @@ client.on('ready', async () => {
 
 
   welcome(client)
-  roleClaim(client)
 
   
 

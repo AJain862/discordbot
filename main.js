@@ -39,7 +39,7 @@ client.on('ready', async () => {
 
 
   welcome(client)
-  roleClaim(client)
+  
 
   
 
@@ -180,6 +180,14 @@ client.on('ready', async () => {
   })
   command(client, 'youtube', (message) => {
     message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UC49qUd_YFnpkx_-A7NVSKaA?view_as=subscriber')
+})
+command(client, 'reactions', (message) => {
+    let embed = new Discord.MessageEmbed()
+    .setTitle('Reaction Roles')
+    .setDescription('React to gain role!')
+    .setColor('GREEN')
+    let MessageEmbed = await message.channel.send(embed)
+    MessageEmbed.react('👍')
 })
 
   

@@ -11,7 +11,7 @@ module.exports = (client) => {
 
     const reactions = []
 
-    let emojiText = ''
+    let emojiText = 'pls add a reaction to claim a role'
     for (const key in emojis) {
         const emoji = getEmoji(key)
         reactions.push(emoji)
@@ -21,7 +21,7 @@ module.exports = (client) => {
     }
 
 
-    firstMessage(client, channelId, emojiText, [])
+    firstMessage(client, channelId, emojiText, reactions )
 
 }
 

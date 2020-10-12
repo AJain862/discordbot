@@ -9,7 +9,7 @@ const client = new Discord.Client()
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
-const roleClaim = require('./commands/role-claim')
+const roleClaim = require('./role-claim')
 
 
 

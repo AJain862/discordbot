@@ -44,7 +44,7 @@ module.exports = (client) => {
             member.roles.add(role)
         }
         else {
-            member.roles.add(role)
+            member.roles.remove(role)
         }
 
     }

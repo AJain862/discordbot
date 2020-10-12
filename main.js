@@ -9,6 +9,8 @@ const client = new Discord.Client()
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
+const roleClaim = require('./commands/role-claim')
+
 
 
 
@@ -17,6 +19,8 @@ const welcome = require('./welcome')
 
 client.on('ready', async () => {
   console.log('The client is ready!')
+
+  
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
@@ -38,6 +42,7 @@ client.on('ready', async () => {
 
 
   welcome(client)
+  roleClaim(client)
 
   
 

@@ -1,6 +1,6 @@
 const firstMessage = require('./first-message')
 module.exports = (client) => {
-    const channelId = '765280692455211011'
+    const channelId = '765289064772927490'
 
     firstMessage(client, channelId, 'hello worldpdfka;fka', [])
 

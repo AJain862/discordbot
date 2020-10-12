@@ -11,7 +11,7 @@ module.exports = (client) => {
 
     const reactions = []
 
-    let emojiText = ''
+    let emojiText = 'hmmmmmmmm'
     for (const key in emojis) {
         const emoji = getEmoji(key)
         reactions.push(emoji)

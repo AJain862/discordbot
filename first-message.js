@@ -1,5 +1,7 @@
+const { ReactionEmoji } = require("discord.js")
+
 const addReactions = (message, reactions) => {
-    message.react(reactions[0])
+    message.react(reactions[GuildEmoji/ReactionEmoji])
     reactions.shift()
     if (reactions.length > 0) {
       setTimeout(() => addReactions(message, reactions), 750)

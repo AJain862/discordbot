@@ -38,7 +38,7 @@ module.exports = (client) => {
         }
 
         const role = guild.roles.cache.find(role => role.name === roleName)
-        const member = guild .members.cache.find(memer => member .id === user.id) 
+        const member = guild .members.cache.find(memer => member.id === user.id) 
 
         if (add) {
             member.roles.add(role)

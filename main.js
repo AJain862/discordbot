@@ -117,7 +117,7 @@ client.on('ready', async () => {
       `)
   })
 
-  command(client, ['serverinfo', 'whois'], (message) => {
+  command(client, ['serverinfo'], (message) => {
     const { guild } = message
     //console.log(guild)
 
@@ -147,7 +147,7 @@ client.on('ready', async () => {
     
   })
 
-  command(client, 'userinfo', (message) => {
+  command(client, ['userinfo','whois'], (message) => {
     const { guild, channel } = message
     //console.log(guild)
 

@@ -1,8 +1,11 @@
-module.exports = {
+/*module.exports = {
     command: ['lock'],
 
 
     permissionError: 'You need admin permissions to run this command',
+
+    minArgs: 1,
+    maxArgs: 1,
 
 
     callback: (message, arguments, text) => {
@@ -33,5 +36,5 @@ module.exports = {
     },
     permissions: 'ADMINISTRATOR',
 
-}
+}*/
 

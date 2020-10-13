@@ -11,8 +11,9 @@ module.exports = client => {
 
         color: "RANDOM",
         description: 'Welcome to the server',
-        title: `${member}`,
-        
+        title: `${member.id}`,
+        thumbnail: `${message.author.displayAvatarURL()}`
+
              }})
         
         

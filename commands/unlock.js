@@ -1,5 +1,6 @@
 module.exports = {
     commands: ['unlock'],
+    expectedArgs: 'unlock',
     
     permissionError: 'You need admin permissions to run this command',
     minArgs: 2,

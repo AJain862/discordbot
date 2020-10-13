@@ -1,9 +1,11 @@
 module.exports = {
     commands: ['lock'],
-    
+    expectedArgs: 'lock',
+
     permissionError: 'You need admin permissions to run this command',
     minArgs: 1,
     maxArgs: 1,
+    
     callback: (message, arguments, text) => {
         async function f() {
         if(arguments[0]) return message.channel.send('You did not mention any channels');

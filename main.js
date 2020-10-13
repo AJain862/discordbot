@@ -103,6 +103,7 @@ client.on('ready', async () => {
 
 **a-help** - Displays the help menu
 **a-serverinfo** - Diplays server info
+**a-userinfo** - Displays user info
 **a-servers** - Displays which servers I am in
 **a-ping** - Displays your ping
 **a-cc** - Bulk Deletes Messages

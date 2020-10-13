@@ -12,7 +12,7 @@ module.exports = (client) => {
 
     const reactions = []
 
-    let emojiText = 'pls add a reaction to claim a role\n\n'
+    let emojiText = 'Please react once you have read the rules.\n\n'
     for (const key in emojis) {
         const emoji = getEmoji(key)
         reactions.push(emoji)

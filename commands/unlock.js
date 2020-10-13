@@ -2,9 +2,12 @@ module.exports = {
     commands: ['unlock'],
     
     permissionError: 'You need admin permissions to run this command',
-    minArgs: 1,
+    minArgs: 2,
     maxArgs: 1,
-    callback: (message, arguments, text) => {
+    
+    callback: (message, arguments, text, ) => {
+        async function f() {
+        
         if(arguments[0]) return message.channel.send('You did not mention any channels');
         if(!message.mentions.channels.first()) return message.channel.send('You did not mention a channel.')
 
@@ -27,7 +30,7 @@ module.exports = {
         })
 
         
-      
+    }
     },
     permissions: 'ADMINISTRATOR', 
     

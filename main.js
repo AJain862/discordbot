@@ -221,7 +221,7 @@ client.on('ready', async () => {
       message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb')
   })
   command(client, 'youtube', (message) => {
-    message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UC49qUd_YFnpkx_-A7NVSKaA?view_as=subscriber')
+    message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UCXRiJN3oM8m7f4VEQn2WXLQ https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UC49qUd_YFnpkx_-A7NVSKaA?view_as=subscriber')
 })
    
 

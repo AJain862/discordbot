@@ -7,7 +7,13 @@ module.exports = client => {
     
     client.on('guildMemberAdd', (member) => {
 
-        member.send({embed: { color: "RANDOM", description: `Hello ${member}!, Welcome to ${member.guild.name}` }})
+        member.send({embed: { 
+
+        color: "RANDOM",
+        description: 'Welcome to the server',
+        title: `${member}`,
+        
+             }})
         
         
 

@@ -117,6 +117,12 @@ client.on('ready', async () => {
       `)
   })
 
+  command(client, ['help math'], (message) => {
+      message.channel.send(`
+      HIYA
+      `)
+  })
+
   command(client, ['serverinfo'], (message) => {
     const { guild } = message
     //console.log(guild)

@@ -3,6 +3,7 @@ const { DiscordAPIError } = require("discord.js")
 module.exports = client => {
     const channelId = '765356808172208154'
     const targetChannelId = '765356808172208152'
+    const avatar = message.author.avatarURL()
     
     
     client.on('guildMemberAdd', (member) => {
@@ -12,7 +13,8 @@ module.exports = client => {
         color: "RANDOM",
         description: 'Welcome to the server',
         title: `${member.id}`,
-        thumbnail: author.displayAvatarURL()
+        thumbnail: avatar
+        
 
              }})
         

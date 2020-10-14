@@ -42,7 +42,7 @@ client.on('ready', async () => {
   roleClaim(client)
 
   command(client, 'lock', message => {
-      const { message, member, args} = message
+      const {  member, args} = message
       async function f() {
         if(!message.member.hasPermission('MANGAGE_CHANNELS')) return message.channel.send('you cannot use this command')
         if(!args[0]) return message.channel.send('You did not mention any channels');

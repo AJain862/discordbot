@@ -355,12 +355,17 @@ client.on('message', (message) => {
             
             if(memberId) {
                 const member = message.guild.members.cache.get(memberId.id);
+                try {
+
+                    message.channel.send(member)
+
+                } catch(err) {
+                    console.log(err)
+                }
                 
                  
                 const mutedRole = message.guild.roles.cache.get('765356807928414233');
-                if(!mutedRole){
-                    message.channel.send('potato')
-                }
+                
                     
                     //if(mutedRole) {
                        // member.roles.add(mutedRole)

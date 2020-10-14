@@ -45,7 +45,7 @@ client.on('ready', async () => {
 
   welcome(client)
   roleClaim(client)
-  warn(client)
+  
 
   
   
@@ -106,7 +106,7 @@ client.on('ready', async () => {
   })
 
   command(client, 'help', message => {
-      message.channel.send(`
+      message.channel.send(```
     These are my supported commands:
 
 **a-help** - Displays the help menu
@@ -122,7 +122,7 @@ client.on('ready', async () => {
        
       
       
-      `)
+      ```)
   })
 
   command(client, ['help math'], (message) => {

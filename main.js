@@ -10,6 +10,7 @@ const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
+const { minArgs } = require('./commands/add')
 
 
 
@@ -50,7 +51,7 @@ client.on('ready', async () => {
       const { member, args } = message
       if (!message.member.hasPermission(["ADMINISTRATOR"])) return message.reply('You can\'t use this command!')
         const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
-        if (args[1] === 'on') {
+        if (minArgs[1] === 'on') {
             channels.forEach(channel => {
                 channel.updateOverwrite(message.guild.roles.everyone, {
                     SEND_MESSAGES: false
@@ -59,7 +60,7 @@ client.on('ready', async () => {
                 })
             })
             return message.channel.send('Locked all channels');
-        } else if (args[1] === 'off') {
+        } else if (minArgs[1] === 'off') {
             channels.forEach(channel => {
                 channel.updateOverwrite(message.guild.roles.everyone, {
                     SEND_MESSAGES: true

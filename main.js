@@ -88,10 +88,7 @@ client.on('ready', async () => {
 
 
 
-  command(client, 'mute', message, guild => {
-    
-})
-
+  
 
 
 

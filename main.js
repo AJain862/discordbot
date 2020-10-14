@@ -47,30 +47,7 @@ client.on('ready', async () => {
   
   
 
-  command(client, 'lock', message => {
-      const { member, args } = message
-      if (!message.member.hasPermission(["ADMINISTRATOR"])) return message.reply('You can\'t use this command!')
-        const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
-        if (minArgs[1] === 'on') {
-            channels.forEach(channel => {
-                channel.updateOverwrite(message.guild.roles.everyone, {
-                    SEND_MESSAGES: false
-                }).then(() => {
-                    channel.setName(channel.name += `🔒`)
-                })
-            })
-            return message.channel.send('Locked all channels');
-        } else if (minArgs[1] === 'off') {
-            channels.forEach(channel => {
-                channel.updateOverwrite(message.guild.roles.everyone, {
-                    SEND_MESSAGES: true
-                }).then(() => {
-                    channel.setName(channel.name.replace('🔒', ''))
-                })
-            })
-            return message.channel.send('Unlocked all channels')
-        }
-  })
+  
 
   command(client, 'ban', message => {
       const { member, mentions } = message
@@ -262,6 +239,28 @@ client.on('ready', async () => {
 
 
   
+})
+
+client.on('message', (message) => {
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'lock') {
+        if(!message.member.permissions.has('ADMINISTRATOR')) return;
+        message.channel.createOverwrite(message.guild.id, {
+            SEND_MESSAGES: false
+        }, `lock requested`);
+    }
+})
+
+client.on('message', (message) => {
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'unlock') {
+        if(!message.member.permissions.has('ADMINISTRATOR')) return;
+        message.channel.createOverwrite(message.guild.id, {
+            SEND_MESSAGES: true
+        }, `unlock requested`);
+    }
 })
 
 client.login(process.env.token);

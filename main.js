@@ -242,16 +242,17 @@ client.on('ready', async () => {
 })
 
 const prefix = 'a-'
+const cmember = '765356807895384072'
 
 client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
         if(!message.member.permissions.has('ADMINISTRATOR')) return;
-        message.channel.createOverwrite(message.guild.id, {
+        message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false
         }, `lock requested`);
-    }
+    } 
 })
 
 
@@ -260,8 +261,10 @@ client.on('message', (message) => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {
         if(!message.member.permissions.has('ADMINISTRATOR')) return;
-        message.channel.createOverwrite(message.guild.id, {
+        message.channel.send('Channel has been unlocked')
+        message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: true
+            
         }, `unlock requested`);
     }
 })

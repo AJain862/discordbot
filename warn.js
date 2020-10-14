@@ -1,45 +1,45 @@
 var Discord = require('discord.js')
 
-exports.run = async(client, msg, args) => {
-    if(!message.member.hasPermission("ADMINISTRATOR"))return message.reply('You cannot usse this command!')
-        
-        var user = message.mentions.users.first();
+module.exports = (client), async (client, message, args) => {
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('You cannot usse this command!')
 
-        if(!user) return message.reply('You did not mention anyone!');
+    var user = message.mentions.users.first();
 
-        var member;
+    if (!user) return message.reply('You did not mention anyone!');
 
-        try {
-            member = await message.guild.members.fetch(user);
+    var member;
+
+    try {
+        member = await message.guild.members.fetch(user);
 
 
-        }catch(err) {
-            member = null
-        }
+    } catch (err) {
+        member = null
+    }
 
-        if(!member) return message.reply('This person is not in the server!')
+    if (!member) return message.reply('This person is not in the server!')
 
-        var reason = args.splice(1).join(' ');
+    var reason = args.splice(1).join(' ');
 
-        var channel = message.guild.channels.cache.find(c => c.name === 'general')
+    var channel = message.guild.channels.cache.find(c => c.name === 'general')
 
-        var log = new Discord.MessageEmbed()
+    var log = new Discord.MessageEmbed()
         .setTitle('User Warned')
         .addField('User:', user, true)
         .addField('By:', message.author, user)
         .addField('Reason:', reason)
-        channel.send(log);
+    channel.send(log);
 
-        var embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setTitle('You were warned!')
         .setDescription(reason)
 
-        try{
-            user.send(embed)
+    try {
+        user.send(embed)
 
-        }catch(err) {
-            console.warn(err)
-        }
-        message.channel.send(`**${user}** has been warned by **${message.author}**`)
+    } catch (err) {
+        console.warn(err)
+    }
+    message.channel.send(`**${user}** has been warned by **${message.author}**`)
 
 }

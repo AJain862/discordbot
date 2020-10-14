@@ -10,8 +10,9 @@ const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
-const { minArgs } = require('./commands/add')
 const warn = require('./warn')
+const { minArgs } = require('./commands/add')
+
 
 
 

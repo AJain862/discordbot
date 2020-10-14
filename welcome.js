@@ -1,6 +1,6 @@
 const { DiscordAPIError } = require("discord.js")
 
-const { MessageEmbed } = require("discord.js")
+
 module.exports = client => {
     const channelId = '765356808172208154'
     const targetChannelId = '765356808172208152'

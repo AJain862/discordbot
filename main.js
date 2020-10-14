@@ -325,9 +325,35 @@ client.on('message', (message) => {
             
         }, `unlock requested`);
     }
+    
 })
 
-client.on("message", (message) => {
+client.on('message', (message) => {
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'mute'){
+        if(!message.member.hasPermission(['BAN_MEMBERS', "MANAGE_MESSAGES"])){
+            message.channel.send('You dont have permission to use that command.')
+        }
+        else {
+            message.reply('good')
+    } 
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
@@ -344,8 +370,8 @@ client.on("message", (message) => {
                 else {
                     let mutedRole = message.guild.roles.cache.get('765356807928414233');
                     if(mutedRole) {
-                        message.channel.send(`<@${mutedRole}> was muted.`)
                         member.roles.add(mutedRole)
+                        message.channel.send(` was muted.`)
                     }
                     else {
                         message.channel.send('Muted Role not found')
@@ -357,7 +383,7 @@ client.on("message", (message) => {
             }
         }
     }
-})
+})*/
 
 
 

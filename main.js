@@ -130,10 +130,12 @@ client.on('ready', async () => {
 
   command(client, ['helpmath'], (message) => {
       message.channel.send(`
-      **a-add** - Adds 2 numbers
-      **a-sub** - Subtracts 2 numbers
-      **a-mul** - Multiplies 2 numbers
-      **a-div** - Divides 2 numbers
+      These are my supported math commands:
+      
+**a-add** - Adds 2 numbers
+**a-sub** - Subtracts 2 numbers
+**a-mul** - Multiplies 2 numbers
+**a-div** - Divides 2 numbers
       `)
   })
 

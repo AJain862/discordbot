@@ -1,6 +1,6 @@
 var Discord = require('discord.js')
 
-module.exports =  async (client, message, args) => {
+module.exports =  async (client, message, args, member) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('You cannot usse this command!')
 
     var user = message.mentions.users.first();

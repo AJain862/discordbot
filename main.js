@@ -19,37 +19,7 @@ const roleClaim = require('./role-claim')
 client.on('ready', async () => {
   console.log('The client is ready!')
 
-  client.on('message', async (msg) => {
-    if (msg.content === 'a-lock') {
-        if (!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send('Sorry, you do not have permissiont to use this command!')
-        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
-        await msg.channel.send(`We are Locking ${msg.channel.id} channels! It will take 1 second per channel`)
-        
-        msg.channel.cache.forEach(async (c) => {
-           
-            await c.createOverwrite(msg.channel.id, {
-                SEND_MESSAGES: false
-            })
-            await msg.edit(`locked all channels in your guild (${msg.guild.channels.cache.size} channels!)`)
-
-        })
-
-
-    }
-    if (msg.content === 'a-unlock') {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('Sorry, you do not have permission to use this command.')
-        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
-        await msg.channel.send(`Unlocking all channels in your guild!(${msg.guild.channels.cache.size} channels) it will take 1 second per channel.`)
-        msg.channels.cache.forEach(async (c) => {
-            
-            await c.createOverwrite(msg.channel.id, {
-                SEND_MESSAGES: true
-            })
-            await msg.edit(`Unlocked all channels is your guild! (${msg.guild.channels.cache.size} channels!)`)
-        })
-    }
-
-})
+  
 
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
@@ -76,7 +46,30 @@ client.on('ready', async () => {
   
   
 
-  
+  command(client, 'lock', message => {
+      const { member, args } = message
+      if (!message.member.hasPermission(["ADMINISTRATOR"])) return message.reply('You can\'t use this command!')
+        const channels = message.guild.channels.cache.filter(ch => ch.type !== 'category');
+        if (args[1] === 'on') {
+            channels.forEach(channel => {
+                channel.updateOverwrite(message.guild.roles.everyone, {
+                    SEND_MESSAGES: false
+                }).then(() => {
+                    channel.setName(channel.name += `🔒`)
+                })
+            })
+            return message.channel.send('Locked all channels');
+        } else if (args[1] === 'off') {
+            channels.forEach(channel => {
+                channel.updateOverwrite(message.guild.roles.everyone, {
+                    SEND_MESSAGES: true
+                }).then(() => {
+                    channel.setName(channel.name.replace('🔒', ''))
+                })
+            })
+            return message.channel.send('Unlocked all channels')
+        }
+  })
 
   command(client, 'ban', message => {
       const { member, mentions } = message

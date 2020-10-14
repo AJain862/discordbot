@@ -352,12 +352,13 @@ client.on('message', (message) => {
         }
         else {
             const memberId = mentions.users.first()
+            message.channel.send('good')
             
             if(memberId) {
                 
                 
 
-                message.channel.send(memberId)
+                (memberId)
 
                 
                 

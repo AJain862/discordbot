@@ -45,9 +45,55 @@ client.on('ready', async () => {
 
   welcome(client)
   roleClaim(client)
+
+  
   
 
   
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
   
@@ -131,7 +177,7 @@ client.on('ready', async () => {
   command(client, ['helpmath'], (message) => {
       message.channel.send(`
       These are my supported math commands:
-      
+
 **a-add** - Adds 2 numbers
 **a-sub** - Subtracts 2 numbers
 **a-mul** - Multiplies 2 numbers
@@ -275,11 +321,13 @@ client.on('message', (message) => {
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
         message.channel.createOverwrite(cmember, {
-            SEND_MESSAGES: true
+            SEND_MESSAGES: null
             
         }, `unlock requested`);
     }
 })
+
+
 
 /*client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);

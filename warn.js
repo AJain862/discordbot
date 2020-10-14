@@ -1,9 +1,7 @@
 var Discord = require('discord.js')
 
-module.exports =   async(client, message, args) => {
-    client.on((member) => {
-        async function f() {
-        if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('You cannot usse this command!')
+module.exports =  async (client, message, args) => {
+    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply('You cannot usse this command!')
 
     var user = message.mentions.users.first();
 
@@ -43,8 +41,5 @@ module.exports =   async(client, message, args) => {
         console.warn(err)
     }
     message.channel.send(`**${user}** has been warned by **${message.author}**`)
-        }
-    })
-    
 
 }

@@ -343,7 +343,7 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
-    const { mentions} = message
+    const { mentions, } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
@@ -352,7 +352,7 @@ client.on('message', (message) => {
         }
         else {
             let memberId = mentions.users.first()
-            let member = message.guild.members.cache.get(memberId.id);
+            const member = message.guild.members.cache.get(memberId.id);
             if(member) {
                 if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
                     message.channel.send('You cannot mute that person')

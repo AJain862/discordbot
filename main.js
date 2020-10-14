@@ -336,9 +336,24 @@ client.on('message', (message) => {
             message.channel.send('You dont have permission to use that command.')
         }
         else {
-            let memberId = message.content.substring(message.content.indexOf(' ')+1)
-            console.log('breh what is this')
+            const memberId = mentions.users.first()
+            const member = message.guild.members.cache.get(memberId.id)
+        
+        if(member){
+            if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
+                message.channel.send('You cannot mute that person')
+            }
+        }else {
+            let mutedRole = message.guild.roles.cache.get('765356807928414233');
+            if(mutedRole) {
+                member.roles.add(mutedRole)
+                message.channel.send(` was muted.`)
+            }
+            else {
+                message.channel.send('Muted Role not found')
+            }
         }
+    }
 }
 })
 

@@ -327,6 +327,38 @@ client.on('message', (message) => {
     }
 })
 
+client.on("message", (message) => {
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'mute') {
+        if(!message.member.hasPermission(['BAN_MEMBERS', "MANAGE_MESSAGES"])){
+            message.channel.send('You dont have permission to use that command.')
+        }
+        else {
+            let memberId = message.content.substring(message.content.indexOf(' ')+1)
+            let member = message.guild.members.cache.get(memberId);
+            if(member) {
+                if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
+                    message.channel.send('You cannot mute that person')
+                }
+                else {
+                    let mutedRole = message.guild.roles.cache.get('765356807928414233');
+                    if(mutedRole) {
+                        message.channel.send(`<@${mutedRole}> was muted.`)
+                        member.roles.add(mutedRole)
+                    }
+                    else {
+                        message.channel.send('Muted Role not found')
+                    }
+                }
+            }
+            else {
+                message.channel.send('Member not found');
+            }
+        }
+    }
+})
+
 
 
 /*client.on('message', (message) => {

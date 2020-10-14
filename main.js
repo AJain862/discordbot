@@ -355,10 +355,8 @@ client.on('message', (message) => {
             
             if(memberId) {
                 const member = message.guild.members.cache.get(memberId.id);
-                if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
-                    message.channel.send('You cannot mute that person')
-                }
-                else {
+                
+                 
                     const mutedRole = message.guild.roles.cache.get('765356807928414233');
                     console.log(mutedRole)
                     //if(mutedRole) {
@@ -368,7 +366,7 @@ client.on('message', (message) => {
                     //else {
                         //message.channel.send('Muted Role not found')
                     //}
-                }
+                
             }
             else {
                 message.channel.send('Please specify someone to ban');

@@ -249,6 +249,7 @@ client.on('message', (message) => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
         if(!message.member.permissions.has('ADMINISTRATOR')) return;
+        message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false
         }, `lock requested`);

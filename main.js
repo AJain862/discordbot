@@ -253,7 +253,7 @@ client.on('message', (message) => {
         }, `lock requested`);
     }
 })
-const prefix = 'a-'
+
 
 client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);

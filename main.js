@@ -19,6 +19,38 @@ const roleClaim = require('./role-claim')
 client.on('ready', async () => {
   console.log('The client is ready!')
 
+  client.on('message', async (msg) => {
+    if (msg.content === 'a-lock') {
+        if (!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send('Sorry, you do not have permissiont to use this command!')
+        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
+        await msg.channel.send(`We are Locking ${msg.channel.id} channels! It will take 1 second per channel`)
+        
+        msg.guild.channel(async (c) => {
+           
+            await c.createOverwrite(msg.channel.id, {
+                SEND_MESSAGES: false
+            })
+            await msg.edit(`locked all channels in your guild (${msg.guild.channels.cache.size} channels!)`)
+
+        })
+
+
+    }
+    if (msg.content === 'a-unlock') {
+        if (!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('Sorry, you do not have permission to use this command.')
+        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
+        await msg.channel.send(`Unlocking all channels in your guild!(${msg.guild.channels.cache.size} channels) it will take 1 second per channel.`)
+        msg.guild.channels.cache.forEach(async (c) => {
+            
+            await c.createOverwrite(msg.channel.id, {
+                SEND_MESSAGES: true
+            })
+            await msg.edit(`Unlocked all channels is your guild! (${msg.guild.channels.cache.size} channels!)`)
+        })
+    }
+
+})
+
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
 
@@ -41,34 +73,7 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
 
-  command(client, 'lock', message => {
-      const { args } = message
-      async function f() {
-        if(!message.member.hasPermission('MANGAGE_CHANNELS')) return message.channel.send('you cannot use this command')
-        if(!args[0]) return message.channel.send('You did not mention any channels');
-        if (!message.mentions.channels.first()) return message.channel.send('You did not mention a channel.')
-
-            const role = message.guild.roles.get('765356807895384072');
-            if (!role) return message.channel.send('Role is not found');
-
-            await message.mentions.channels.forEach(async channel => {
-                if (channel.name.startsWith('🔒')) return message.channel.send(`<#${channel.id}> is already locked`);
-                await channel.setName(`🔒${channel.name}`);
-                try {
-                    channel.overwritesPermissions(role, {
-                        SEND_MESSAGES: false
-                    });
-                    message.channel.send(`<#${channel.id}> has been locked`)
-
-                } catch (err) {
-                    console.log(err)
-                    message.channel.send('Something has gone wrong locking the channels');
-                }
-            })
-      }
-      
-
-  })
+  
   
 
   
@@ -347,37 +352,7 @@ for (const file of commandfiles) {
 
 })
 
-/*client.on('message', async (msg) => {
-    if (msg.content === 'a-lock') {
-        if (!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send('Sorry, you do not have permissiont to use this command!')
-        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
-        await msg.channel.send(`We are Locking ${msg.channel.id} channels! It will take 1 second per channel`)
-        
-        msg.guild.channe(async (c) => {
-           
-            await c.createOverwrite(msg.guild.channels.id, {
-                SEND_MESSAGES: false
-            })
-            await msg.edit(`locked all channels in your guild (${msg.guild.channels.cache.size} channels!)`)
-
-        })
-
-
-    }
-    if (msg.content === 'a-unlock') {
-        if (!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('Sorry, you do not have permission to use this command.')
-        if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
-        await msg.channel.send(`Unlocking all channels in your guild!(${msg.guild.channels.cache.size} channels) it will take 1 second per channel.`)
-        msg.guild.channels.cache.forEach(async (c) => {
-            
-            await c.createOverwrite(msg.guild.id, {
-                SEND_MESSAGES: true
-            })
-            await msg.edit(`Unlocked all channels is your guild! (${msg.guild.channels.cache.size} channels!)`)
-        })
-    }
-
-})*/
+*/
 
 
 /*command(client, 'servers', message => {

@@ -331,6 +331,9 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'unlock') {   
 const { member, mentions } = message
     const tag = `<@${member.id}>`
     if(
@@ -351,6 +354,7 @@ const { member, mentions } = message
     }else {
         message.channel.send(`${tag} You do not have permission to use this command`)
     }
+}
 })
 
 

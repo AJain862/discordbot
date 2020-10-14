@@ -338,7 +338,7 @@ client.on('message', (message) => {
         else {
             message.reply('good')
     } 
-    
+}
 })
 
 

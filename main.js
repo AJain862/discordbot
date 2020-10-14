@@ -354,14 +354,12 @@ client.on('message', (message) => {
             const memberId = mentions.users.first()
             
             if(memberId) {
-                const member = message.guild.members.cache.get(memberId.id);
-                try {
+                
+                
 
-                    message.channel.send(memberId)
+                message.channel.send(memberId)
 
-                } catch(err) {
-                    console.log(err)
-                }
+                
                 
                  
                 //const mutedRole = message.guild.roles.cache.get('765356807928414233');

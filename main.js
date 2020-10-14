@@ -343,7 +343,7 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
-    const { mentions } = message
+    const { mentions, member } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
@@ -352,7 +352,7 @@ client.on('message', (message) => {
         }
         else {
             const memberId = mentions.users.first()
-            message.channel.send('good')
+            console.log(memberId)
             
             if(memberId) {
                 

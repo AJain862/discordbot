@@ -351,14 +351,15 @@ client.on('message', (message) => {
             message.channel.send('You dont have permission to use that command.')
         }
         else {
-            let memberId = mentions.users.first()
-            const member = message.guild.members.cache.get(memberId.id);
+            const memberId = mentions.users.first()
+            
             if(member) {
+                const member = message.guild.members.cache.get(memberId.id);
                 if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
                     message.channel.send('You cannot mute that person')
                 }
                 else {
-                    let mutedRole = message.guild.roles.cache.get('765356807928414233');
+                    const mutedRole = message.guild.roles.cache.get('765356807928414233');
                     if(mutedRole) {
                         member.roles.add(mutedRole)
                         message.channel.send(`That user was muted.`)
@@ -369,7 +370,7 @@ client.on('message', (message) => {
                 }
             }
             else {
-                message.channel.send('Member not found');
+                message.channel.send('Please specify someone to ban');
             }
         }
     }

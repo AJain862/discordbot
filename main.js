@@ -337,7 +337,7 @@ client.on('message', (message) => {
         }
         else {
             let memberId = message.content.substring(message.content.indexOf(' ')+1)
-            console.log(memberId)
+            console.log('breh what is this')
         }
 }
 })

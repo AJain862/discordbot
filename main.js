@@ -328,48 +328,22 @@ client.on('message', (message) => {
     
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on('message', (message) => {
-    let args = message.content.slice(prefix.length).trim().split(/ + /g);
-    let cmd = args.shift().toLowerCase();
-    if(cmd === 'mute'){
-        if(!message.member.hasPermission(['BAN_MEMBERS', "MANAGE_MESSAGES"])){
-            message.channel.send('You dont have permission to use that command.')
-        }
-        else {
-            const memberId = mentions.users.first()
-            const member = message.guild.members.cache.get(memberId.id)
-        
-        if(member){
-            if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
-                message.channel.send('You cannot mute that person')
-            }
-        }else {
-            let mutedRole = message.guild.roles.cache.get('765356807928414233');
-            if(mutedRole) {
-                member.roles.add(mutedRole)
-                message.channel.send(` was muted.`)
-            }
-            else {
-                message.channel.send('Muted Role not found')
-            }
-        }
-    }
-}
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*client.on('message', (message) => {
+    const { mentions} = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
@@ -377,8 +351,8 @@ client.on('message', (message) => {
             message.channel.send('You dont have permission to use that command.')
         }
         else {
-            let memberId = message.content.substring(message.content.indexOf(' ')+1)
-            let member = message.guild.members.cache.get(memberId);
+            let memberId = mentions.users.first()
+            let member = message.guild.members.cache.get(memberId.id);
             if(member) {
                 if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
                     message.channel.send('You cannot mute that person')
@@ -387,7 +361,7 @@ client.on('message', (message) => {
                     let mutedRole = message.guild.roles.cache.get('765356807928414233');
                     if(mutedRole) {
                         member.roles.add(mutedRole)
-                        message.channel.send(` was muted.`)
+                        message.channel.send(`That user was muted.`)
                     }
                     else {
                         message.channel.send('Muted Role not found')
@@ -399,7 +373,7 @@ client.on('message', (message) => {
             }
         }
     }
-})*/
+})
 
 
 

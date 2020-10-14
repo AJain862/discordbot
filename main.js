@@ -11,6 +11,7 @@ const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
 const { minArgs } = require('./commands/add')
+const warn = require('./warn')
 
 
 
@@ -43,6 +44,7 @@ client.on('ready', async () => {
 
   welcome(client)
   roleClaim(client)
+  warn(client)
 
   
   
@@ -270,7 +272,7 @@ client.on('message', (message) => {
     }
 })
 
-client.on('message', (message) => {
+/*client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'warn') {
@@ -314,11 +316,11 @@ client.on('message', (message) => {
         }catch(err) {
             console.warn(err)
         }
-        message.channel.send(`**${user}** has been warned by **${message.author}**!`)
+        message.channel.send(`**${user}** has been warned by **${message.author}**`)
 
     }
 }
-})
+})*/
 
 client.login(process.env.token);
 

@@ -360,13 +360,14 @@ client.on('message', (message) => {
                 }
                 else {
                     const mutedRole = message.guild.roles.cache.get('765356807928414233');
-                    if(mutedRole) {
-                        member.roles.add(mutedRole)
-                        message.channel.send(`That user was muted.`)
-                    }
-                    else {
-                        message.channel.send('Muted Role not found')
-                    }
+                    console.log(mutedRole)
+                    //if(mutedRole) {
+                       // member.roles.add(mutedRole)
+                        //message.channel.send(`That user was muted.`)
+                    //}
+                    //else {
+                        //message.channel.send('Muted Role not found')
+                    //}
                 }
             }
             else {

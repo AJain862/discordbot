@@ -337,15 +337,8 @@ client.on('message', (message) => {
         }
         else {
             let memberId = message.content.substring(message.content.indexOf(' ')+1)
-            let member = message.guild.members.cache.get(memberId);
-            if(member) {
-                if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
-                    message.channel.send('You cannot mute that person')
-                }
-            } else {
-                console.log(memberId)
-            }
-        } 
+            console.log(memberId)
+        }
 }
 })
 

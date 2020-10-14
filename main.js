@@ -248,7 +248,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
-        if(!message.member.permissions.has('ADMINISTRATOR')) return;
+        if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false
@@ -261,7 +261,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {
-        if(!message.member.permissions.has('ADMINISTRATOR')) return;
+        if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: true

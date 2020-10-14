@@ -88,7 +88,9 @@ client.on('ready', async () => {
 
 
 
-
+  command(client, 'mute', message, guild => {
+    
+})
 
 
 
@@ -331,18 +333,37 @@ client.on('message', (message) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 client.on('message', (message) => {
+const { member, mentions } = message
+    const tag = `<@${member.id}>`
+    if(
+        member.hasPermission('ADMINISTRATOR') || 
+        member.hasPermission('BAN_MEMBERS')
+        ) {
+            const target = mentions.users.first()
+            if (target) {
+                const targetMember = message.guild.members.cache.get(target.id)
+                const mutedRole = message.guild.roles.cache.get('765356807928414233')
+                targetMember.roles.add(mutedRole)
+                message.channel.send(`${tag} That user has been muted.`)
+
+            } else {
+                message.channel.send(`${tag} Please specify someone to mute `)
+            }
+
+    }else {
+        message.channel.send(`${tag} You do not have permission to use this command`)
+    }
+})
+
+
+
+
+
+
+
+
+/*client.on('message', (message) => {
     const { mentions, member } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
@@ -380,7 +401,7 @@ client.on('message', (message) => {
             }
         }
     }
-})
+})*/
 
 
 

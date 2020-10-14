@@ -25,7 +25,7 @@ client.on('ready', async () => {
         if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
         await msg.channel.send(`We are Locking ${msg.channel.id} channels! It will take 1 second per channel`)
         
-        msg.guild.channel(async (c) => {
+        msg.channel.cache.forEach(async (c) => {
            
             await c.createOverwrite(msg.channel.id, {
                 SEND_MESSAGES: false
@@ -40,7 +40,7 @@ client.on('ready', async () => {
         if (!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send('Sorry, you do not have permission to use this command.')
         if (!msg.guild.me.hasPermission('ADMINISTRATOR')) return msg.channel.send('Please give me admin perms.')
         await msg.channel.send(`Unlocking all channels in your guild!(${msg.guild.channels.cache.size} channels) it will take 1 second per channel.`)
-        msg.guild.channels.cache.forEach(async (c) => {
+        msg.channels.cache.forEach(async (c) => {
             
             await c.createOverwrite(msg.channel.id, {
                 SEND_MESSAGES: true

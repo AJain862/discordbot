@@ -353,7 +353,7 @@ client.on('message', (message) => {
         else {
             const memberId = mentions.users.first()
             
-            if(member) {
+            if(memberId) {
                 const member = message.guild.members.cache.get(memberId.id);
                 if(member.hasPermission(["BAN_MEMBERS", "MANAGE_MESSAGES"]) && !message.member.hasPermission('ADMINISTRATOR')){
                     message.channel.send('You cannot mute that person')

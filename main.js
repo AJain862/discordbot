@@ -106,7 +106,7 @@ client.on('ready', async () => {
   })
 
   command(client, 'help', message => {
-      message.channel.send(```
+      message.channel.send(`
     These are my supported commands:
 
 **a-help** - Displays the help menu
@@ -119,15 +119,21 @@ client.on('ready', async () => {
 **a-ban** - Bans specified user
 **a-nitro** - GIVES YOU A NITRO
 **a-youtube** - Gives you content to watch and subscribe to
+**a-lock/unlock** - Locks/Unlocks a channel
+**a-helpmath** - Gives you math commands
+
        
       
       
-      ```)
+      `)
   })
 
-  command(client, ['help math'], (message) => {
+  command(client, ['helpmath'], (message) => {
       message.channel.send(`
-      HIYA
+      **a-add** - Adds 2 numbers
+      **a-sub** - Subtracts 2 numbers
+      **a-mul** - Multiplies 2 numbers
+      **a-div** - Divides 2 numbers
       `)
   })
 

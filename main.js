@@ -343,7 +343,7 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
-    const { mentions, } = message
+    const { mentions } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
@@ -357,14 +357,14 @@ client.on('message', (message) => {
                 const member = message.guild.members.cache.get(memberId.id);
                 try {
 
-                    message.channel.send(member)
+                    message.channel.send(memberId)
 
                 } catch(err) {
                     console.log(err)
                 }
                 
                  
-                const mutedRole = message.guild.roles.cache.get('765356807928414233');
+                //const mutedRole = message.guild.roles.cache.get('765356807928414233');
                 
                     
                     //if(mutedRole) {

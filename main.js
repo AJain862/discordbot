@@ -412,7 +412,28 @@ client.on('message', (message) => {
         message.reply(`The slowmode for this channel has been set to ${duration}`)
     }
 })
+client.on('message', (message) => {
+    async function f() {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'purge') {
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have permission to use this command.')
+        const deleteCount = parseInt(args[0], 10);
+        const deleteMessages = `Deleted ${deleteCount} messages`
 
+        if(!deleteCount || deleteCount < 2) return message.reply('Input and number greater than 2');
+
+        const fetched = await message.channel.fetchMessage({
+            limit: deleteCount
+        });
+
+        message.channel.bulkDelete(fetched)
+        .catch(err => console.log(`Cannot messages because of ${err}`))
+        .then(message.reply(deleteMessages));
+
+    }    
+    }
+})
 
 
 /*client.on('message', (message) => {

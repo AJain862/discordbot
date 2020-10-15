@@ -393,7 +393,7 @@ client.on('message', (message) =>{
 
 })
 client.on('message', (message) => {
-    let args = message.content.slice(prefix.length).split(" ");
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'slowmode') {
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')

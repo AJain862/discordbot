@@ -334,9 +334,9 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {   
-const { member, mentions } = message
-    const tag = `<@${member.id}>`
-    if(
+        const { member, mentions } = message
+        const tag = `<@${member.id}>`
+        if(
         member.hasPermission('ADMINISTRATOR') || 
         member.hasPermission('BAN_MEMBERS')
         ) {

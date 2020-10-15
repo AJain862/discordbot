@@ -1,4 +1,4 @@
-const { DiscordAPIError } = require("discord.js")
+const { DiscordAPIError, User } = require("discord.js")
 
 
 module.exports = client => {
@@ -9,7 +9,7 @@ module.exports = client => {
     
     
     client.on('guildMemberAdd', (member) => {
-        let avatar = user.displayAvatarURL()
+        let avatar = member.displayAvatarURL()
         const embed = new Discord.MessageEmbed()
             .setThumbnail(avatar)
 

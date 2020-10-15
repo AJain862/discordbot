@@ -2,7 +2,8 @@ const { minArgs } = require("./add");
 
 module.exports = {
     name: 'mute',
-    description: 'mutes a user',
+    minArgs: 0,
+    maxArgs: 0,
     
 
     

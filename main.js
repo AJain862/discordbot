@@ -392,7 +392,23 @@ client.on('message', (message) =>{
     }
 
 })
-
+client.on('message', (message) => {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'slowmode') {
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
+        let duration = args
+        if (duration === 'off') {
+            duration = 0
+        }
+        if(isNaN(duration)) {
+            message.reply('Please provide either a number of seconds or the word is "off"')
+            return
+        }
+        channel.setRteLimitPerUser(duration)
+        message.reply(`The slowmode for this channel has been set to ${duration}`)
+    }
+})
 
 
 

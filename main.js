@@ -342,6 +342,7 @@ client.on('message', (message) =>{
         const role = guild.roles.cache.find(role => role.name === 'Muted')
         const mention = message.mentions.members.first()
         mention.roles.add(role)
+        message.reply("`That user has been muted.`")
 
     }
 

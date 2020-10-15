@@ -10,7 +10,7 @@ const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
-const warn = require('./warn')
+
 const { minArgs } = require('./commands/add')
 
 
@@ -331,14 +331,20 @@ client.on('message', (message) => {
 
 
 
-client.on('warn', (warn) => {
-    
-} )
 
 
 
 
+client.on('message', (message) =>{
+    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'mute') {
+        const mentions = message.mentions.members.first()
+        mentions.roles.add("765356807928414233")
 
+    }
+
+})
 
 
 /*client.on('message', (message) => {

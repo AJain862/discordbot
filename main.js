@@ -399,7 +399,7 @@ client.on('message', (message) => {
     if(cmd === 'slow') {
         const { channel } = message
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
-        let duration = args.toLowerCase()
+        let duration = args
         if (duration === 'off') {
             duration = 0
         }

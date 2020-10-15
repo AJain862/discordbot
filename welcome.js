@@ -26,6 +26,7 @@ module.exports = client => {
         
         const channel = member.guild.channels.cache.get(channelId)
         channel.send(message)
+        channel.send(joinEmbed)
         
         
 

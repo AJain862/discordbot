@@ -10,9 +10,10 @@ module.exports = client => {
     
     client.on('guildMemberAdd', (member) => {
         const joinEmbed = Discord.MessageEmbed()
-        .setDiscription('Hi welcome to the server')
+        .setDescription('Hi welcome to the server')
         .setThumbnail(member.displayAvatarURL)
         .setTitle(`${member.tag}`)
+        .setColor('RANDOM')
         
 
         

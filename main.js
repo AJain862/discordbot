@@ -392,7 +392,7 @@ client.on('message', (message) =>{
     }
 
 })
-client.on('message', (message) => {
+client.on('message', (message, args) => {
     
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();

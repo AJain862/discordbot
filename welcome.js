@@ -10,7 +10,7 @@ module.exports = client => {
     
     
     client.on('guildMemberAdd', (member) => {
-        const joinEmbed = Discord.MessageEmbed()
+        const joinEmbed = new Discord.MessageEmbed()
         .setDescription('Hi welcome to the server')
         .setThumbnail(member.displayAvatarURL)
         .setTitle(`${member.tag}`)

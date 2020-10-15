@@ -393,6 +393,7 @@ client.on('message', (message) =>{
 
 })
 client.on('message', (message) => {
+    const { channel } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'slowmode') {
@@ -405,7 +406,7 @@ client.on('message', (message) => {
             message.reply('Please provide either a number of seconds or the word is "off"')
             return
         }
-        channel.setRteLimitPerUser(duration)
+        channel.setRateLimitPerUser(duration)
         message.reply(`The slowmode for this channel has been set to ${duration}`)
     }
 })

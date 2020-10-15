@@ -9,9 +9,11 @@ module.exports = client => {
     
     
     client.on('guildMemberAdd', (member) => {
-        let avatar = member.displayAvatarURL()
-        const embed = new Discord.MessageEmbed()
-            .setThumbnail(avatar)
+        const joinEmbed = Discord.MessageEmbed()
+        .setDiscription('Hi welcome to the server')
+        .setThumbnail(member.displayAvatarURL)
+        .setTitle(`${member.tag}`)
+        
 
         
         
@@ -23,7 +25,7 @@ module.exports = client => {
         
         const channel = member.guild.channels.cache.get(channelId)
         channel.send(message)
-        channel.send(embed)
+        
         
 
     })

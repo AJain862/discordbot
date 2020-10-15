@@ -5,31 +5,31 @@ const { DiscordAPIError, User } = require("discord.js")
 module.exports = client => {
     const channelId = '765356808172208154'
     const targetChannelId = '765356808172208152'
-    
-    
-    
-    
-    client.on('guildMemberAdd', (member) => {
+
+
+
+
+    client.on('guildMemberAdd', (Joinedmember) => {
         const joinEmbed = new Discord.MessageEmbed()
-        .setDescription('Hi welcome to the server')
-        .setThumbnail(member.displayAvatarURL)
-        .setTitle(`${member.tag}`)
-        .setColor('RANDOM')
-        
+            .setColor('RANDOM')
+            .setThumbnail(Joinedmember.user.displayAvatarURL())
+            .setTitle(`${Joinedmember.user.tag}`)
+            .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');
 
-        
-        
-        
-        
 
-        const message = `Please welcome <@${member.id}> to the server! Please check ${member.guild.channels.cache.get(targetChannelId).toString()}`
-        
-        
-        const channel = member.guild.channels.cache.get(channelId)
+
+
+
+
+        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!!`
+
+
+        const channel = Joinedmember.guild.channels.cache.get(channelId)
         channel.send(message)
         channel.send(joinEmbed)
-        
-        
+
+
+
 
     })
 

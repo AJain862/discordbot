@@ -394,10 +394,10 @@ client.on('message', (message) =>{
 })
 client.on('message', (message) => {
     
-    let argss = message.content.slice(prefix.length).trim().split(/ + /g);
-    let cmd = argss.shift().toLowerCase();
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
     if(cmd === 'slow') {
-        const { channel, args } = message
+        const { channel } = message
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         let duration = args.toLowerCase()
         if (duration === 'off') {

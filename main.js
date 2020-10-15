@@ -339,8 +339,9 @@ client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
-        const mentions = message.mentions.members.first()
-        mentions.roles.add("765356807928414233")
+        const role = guild.roles.cache.find(role => role.name === 'Muted')
+        const mention = message.mentions.members.first()
+        mention.roles.add(role)
 
     }
 

@@ -15,6 +15,7 @@ const bye = require('./bye')
 
 const { minArgs } = require('./commands/add')
 const { error } = require('console')
+const { join } = require('path')
 
 
 
@@ -399,16 +400,18 @@ client.on('message', (message) => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'slow') {
         const { channel } = message
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
-        let duration = args
-        if (duration === 'off') {
-            duration = 0
-        }
-        if(isNaN(duration)) {
-            message.reply('Please provide either a number of seconds or the word is "off"')
+        if(args.length < 2) {
+            message.reply('Please provide a duration and a reason')
             return
         }
-        channel.setRateLimitPerUser(parseInt(duration))
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
+        let duration = args
+       
+        if(isNaN(duration)) {
+            message.reply('Please provide a number of seconds, or 0 to turn it off.')
+            return
+        }
+        channel.setRateLimitPerUser(parseInt(duration, args.join(' ')))
         message.reply(`The slowmode for this channel has been set to ${duration}`)
     }
 })

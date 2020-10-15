@@ -340,10 +340,25 @@ client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
+        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
-        const mention = message.mentions.members.first()
-        mention.roles.add(role)
-        message.channel.send(`${mention}, has been muted.`)
+        if(role){
+            const mention = message.mentions.members.first()
+        if(mention){
+            mention.roles.add(role)
+            message.channel.send(`${mention}, has been muted.`)
+
+        }
+        else {
+            message.reply('This user does not exist.')
+        }
+
+        }
+        else {
+            message.reply('Muted Role not found.')
+        }
+        
+        
 
     }
 
@@ -353,10 +368,24 @@ client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unmute') {
+        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
-        const mention = message.mentions.members.first()
-        mention.roles.remove(role)
-        message.channel.send(`${mention}, has been unmuted.`)
+        if(role){
+            const mention = message.mentions.members.first()
+        if(mention){
+            mention.roles.remove(role)
+            message.channel.send(`${mention}, has been unmuted.`)
+
+        } else {
+            message.reply('This user does not exist.')
+        }
+
+        }
+        else{
+            message.reply('Muted Role not found')
+        }
+        
+        
 
     }
 

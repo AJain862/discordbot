@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 const { DiscordAPIError, User } = require("discord.js")
 
 

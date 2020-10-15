@@ -11,7 +11,7 @@ module.exports = client => {
         
         
 
-        const message = `Bye-Bye <@${member.id}>. Hope you come back soon!:)`
+        const message = `Bye-Bye <@${member.id}>. Hope you come back soon! :)`
         
         
         const channel = member.guild.channels.cache.get(channelId)

@@ -10,6 +10,7 @@ const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
+const bye = require('./bye')
 
 const { minArgs } = require('./commands/add')
 const { error } = require('console')
@@ -46,6 +47,7 @@ client.on('ready', async () => {
 
   welcome(client)
   roleClaim(client)
+  bye(client)
 
   
   
@@ -398,7 +400,7 @@ client.on('message', (message) =>{
     const { mentions, member } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'mute') {
+    if(cmd === 'mut') {
         if(!message.member.hasPermission(['BAN_MEMBERS', "MANAGE_MESSAGES"])){
             message.channel.send('You dont have permission to use that command.')
         }

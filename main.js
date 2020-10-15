@@ -400,10 +400,7 @@ client.on('message', (message) => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'slow') {
         const { channel } = message
-        if(args.length < 2) {
-            message.reply('Please provide a duration and a reason')
-            return
-        }
+        
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         let duration = args
        
@@ -411,7 +408,7 @@ client.on('message', (message) => {
             message.reply('Please provide a number of seconds, or 0 to turn it off.')
             return
         }
-        channel.setRateLimitPerUser(parseInt(duration, args.join(' ')))
+        channel.setRateLimitPerUser(parseInt(duration))
         message.reply(`The slowmode for this channel has been set to ${duration}`)
     }
 })

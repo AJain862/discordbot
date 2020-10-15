@@ -12,6 +12,7 @@ const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
 
 const { minArgs } = require('./commands/add')
+const { error } = require('console')
 
 
 
@@ -336,13 +337,12 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) =>{
-    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+    let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
-        const role = guild.roles.cache.find(role => role.name === 'Muted')
+        const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         const mention = message.mentions.members.first()
         mention.roles.add(role)
-        message.reply("`That user has been muted.`")
 
     }
 

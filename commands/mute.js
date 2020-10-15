@@ -6,11 +6,11 @@ module.exports = {
     permssionError: 'You need admin perms to run this command',
     minArgs: 0,
     maxArgs: 0,
-    callback: (message, arguements, text => {
+    callback: (message, arguements, text) => {
 
         message.channel.send('hi')
 
 
         
-    })
+    }
 }

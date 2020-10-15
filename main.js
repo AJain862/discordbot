@@ -340,16 +340,9 @@ client.on('message', (message) => {
         member.hasPermission('ADMINISTRATOR') || 
         member.hasPermission('BAN_MEMBERS')
         ) {
-            const target = mentions.users.first()
-            if (target) {
-                const targetMember = message.guild.members.cache.get(target.id)
-                const mutedRole = message.guild.roles.cache.get('765356807928414233')
-                targetMember.roles.add(mutedRole)
-                message.channel.send(`${tag} That user has been muted.`)
-
-            } else {
-                message.channel.send(`${tag} Please specify someone to mute `)
-            }
+            const role = guild.roles.cache.find(role => role.name === 'Muted');
+            const member = message.mentions.members.first();
+            member.roles.add(role);
 
     }else {
         message.channel.send(`${tag} You do not have permission to use this command`)

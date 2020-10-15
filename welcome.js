@@ -10,7 +10,7 @@ module.exports = client => {
     
     client.on('guildMemberAdd', (member) => {
         let avatar = user.displayAvatarURL()
-        let embed = new Discord.MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             .setThumbnail(avatar)
 
         

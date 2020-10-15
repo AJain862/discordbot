@@ -352,7 +352,7 @@ client.on('message', (message) =>{
 client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'mute') {
+    if(cmd === 'unmute') {
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         const mention = message.mentions.members.first()
         mention.roles.remove(role)

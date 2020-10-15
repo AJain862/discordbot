@@ -343,7 +343,7 @@ client.on('message', (message) =>{
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         const mention = message.mentions.members.first()
         mention.roles.add(role)
-        message.channel.send(`${role}, has been muted.`)
+        message.channel.send(`${mention}, has been muted.`)
 
     }
 

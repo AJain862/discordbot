@@ -422,6 +422,14 @@ client.on("message", async message => {
     }
   });
 
+  client.on("message", async message => {
+    if (message.content === "a-joke") {
+      const random = new Random();
+          let data = await random.getJoke()
+      message.channel.send(data)
+    }
+  });
+
 
 /*client.on('message', (message) => {
     const { mentions, member } = message

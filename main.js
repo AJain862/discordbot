@@ -319,6 +319,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
+        if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {
@@ -332,6 +333,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {
+        if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
         message.channel.createOverwrite(cmember, {
@@ -464,7 +466,7 @@ client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        if (args[1]) {
+        if (args) {
             let content = args
             message.channel.send(content)
         }

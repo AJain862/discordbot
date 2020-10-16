@@ -273,27 +273,21 @@ client.on('ready', async () => {
   })
 
   command(client, ['cc', 'clearchannel'], (message) => {
-      async function f() {
     const { member, mentions } = message
-    const deletecount = parseInt(arguments[0], 10);
-    const deletemessage = `Deleted ${deletecount} messages.`
-    const fetchted = await message.channel.fetchMessages({
-        limit: deletecount
-    });
     
     const tag = `<@${member.id}>`
   
       
         if (message.member.hasPermission('ADMINISTRATOR')) {
-         
-              message.channel.bulkDelete(fetchted)
-            
+            message.channel.messages.fetch().then((results) => {
+              message.channel.bulkDelete(results)
+            })
           }
 
        else {
           message.channel.send(`${tag} You do not have permission to use this command.`)
       }
-    }  
+    
   })
 
   command(client, 'nitro', (message) => {
@@ -418,7 +412,13 @@ client.on('message', (message) => {
         message.reply(`The slowmode for this channel has been set to ${duration}`)
     }
 })
-
+client.on("message", async message => {
+    if (message.content === "a-meme") {
+      const random = new Random();
+          let data = await random.getMeme()
+      message.channel.send(data)
+    }
+  });
 
 
 /*client.on('message', (message) => {

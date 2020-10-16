@@ -460,6 +460,24 @@ client.on('message', async message => {
         }
 })
 
+client.on('message', async message => {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'say'){
+        if (args[0]) {
+            return message.reply('Please provide something to repeat after dummo dumb!')
+        }
+        else{
+            let content = args.join(' ')
+
+            message.channel.send(content);
+
+
+        }
+    }
+}) 
+
+
 /*client.on('message', (message) => {
     const { mentions, member } = message
     let args = message.content.slice(prefix.length).trim().split(/ + /g);

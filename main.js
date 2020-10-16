@@ -5,6 +5,8 @@ const fs = require('fs')
 const { Random } = require("something-random-on-discord")
 
 
+
+
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
@@ -13,6 +15,7 @@ const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
 const bye = require('./bye')
+const translate = require('./translate')
 
 
 const { minArgs } = require('./commands/add')
@@ -52,6 +55,7 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
   bye(client)
+  translate(client)
 
   
   

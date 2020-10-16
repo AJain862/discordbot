@@ -195,13 +195,17 @@ client.on('ready', async () => {
     const { guild } = message
     //console.log(guild)
 
-    const { name, region, memberCount, owner } = guild
+    const { name, region, memberCount, owner, createdAt } = guild
     const icon = guild.iconURL()
 
     const embed = new Discord.MessageEmbed()
         .setTitle(`Server Info for "${name}"`)
         .setThumbnail(icon)
         .addFields(
+            {
+                name: 'Created At',
+                value: createdAt,
+            },
             {
                 name: 'Members',
                 value: memberCount,

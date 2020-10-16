@@ -464,13 +464,12 @@ client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        if (args[0]) {
-            return message.reply('Please provide something to repeat after dummo dumb!')
+        if (!args[0]) {
+            let content = args.join(' ')
+            message.channel.send(content)
         }
         else{
-            let content = args.join(' ')
-
-            message.channel.send(content);
+            message.reply('Please provide something to say!')
 
 
         }

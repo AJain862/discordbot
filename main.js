@@ -464,7 +464,7 @@ client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        if (args) {
+        if (args[1]) {
             let content = args
             message.channel.send(content)
         }

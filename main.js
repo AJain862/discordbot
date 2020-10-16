@@ -466,8 +466,10 @@ client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
+        
         if (args) {
             let content = args
+            if(content === '@everyone') return message.reply('NOPE!')
             message.channel.send(content)
         }
         else{

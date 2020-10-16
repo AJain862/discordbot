@@ -441,7 +441,7 @@ client.on('message', async message => {
     const { MessageEmbed } = require('discord.js');
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'slow') {
+    if(cmd === 'translate') {
         try {
             if (args.length < 2) {
               return message.reply("Command Usage: `translate <Language> <Text>`")

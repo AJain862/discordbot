@@ -469,7 +469,7 @@ client.on('message', async message => {
         
         if (args) {
             let content = args
-            if(content === '@everyone') return message.reply('NOPE!')
+            if(content === message.mentions('everyone')) return message.reply('NOPE!')
             message.channel.send(content)
         }
         else{

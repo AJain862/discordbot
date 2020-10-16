@@ -423,7 +423,7 @@ client.on('message', (message) => {
 
         if(!deleteCount || deleteCount < 2) return message.reply('Input and number greater than 2');
 
-        const fetched = await message.channel.fetchMessage({
+        const fetched = await message.channel.fetchMessages({
             limit: deleteCount
         });
 

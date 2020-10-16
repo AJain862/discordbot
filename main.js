@@ -2,6 +2,8 @@ const path = require('path')
 
 const fs = require('fs')
 
+const { Random } = require("something-random-on-discord")
+
 
 const Discord = require('discord.js')
 const client = new Discord.Client()

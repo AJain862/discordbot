@@ -1,44 +1,22 @@
 const path = require('path')
-
 const fs = require('fs')
-
 const { Random } = require("something-random-on-discord")
-
-
-
 const translate = require('@k3rn31p4nic/google-translate-api');
 
 const Discord = require('discord.js')
-const client = new Discord.Client({
-    disableMentions: 'all'
-})
-
+const client = new Discord.Client()
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
 const bye = require('./bye')
-
-
-
 const { minArgs } = require('./commands/add')
 const { error } = require('console')
 const { join } = require('path')
-
-
-
-
-
-
-
 client.on('ready', async () => {
   console.log('The client is ready!')
-
-  
-
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
-
   const readCommands = (dir) => {
     const files = fs.readdirSync(path.join(__dirname, dir))
     for (const file of files) {
@@ -51,65 +29,10 @@ client.on('ready', async () => {
       }
     }
   }
-
   readCommands('commands')
-
-
   welcome(client)
   roleClaim(client)
   bye(client)
-  
-  
-  
-
-  
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-
-  
-
   command(client, 'ban', message => {
       const { member, mentions } = message
       const tag = `<@${member.id}>`
@@ -464,22 +387,7 @@ client.on('message', async message => {
         }
 })
 
-client.on('message', async message => {
-    let args = message.content.slice(prefix.length).split(" ");
-    let cmd = args.shift().toLowerCase();
-    if(cmd === 'say'){
-        if(args)
-        if (args) {
-            let content = args
-            message.channel.send(content)
-        }
-        else{
-            message.channel.send('Please provide something to say!')
-
-
-        }
-    }
-}) 
+ 
 
 
 /*client.on('message', (message) => {

@@ -433,9 +433,14 @@ client.on('message', message => {
 
 })
 client.on('message', message => {
-    setTimeout(function(){
-        message.channel.send('BOOO!!!!!')
-      }, 60000);
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'created') {
+        message.channel.send(`${message.guild.name} was created at${message.channel.createdTimestamp}`)
+
+    }
+        
+
 })
 
  

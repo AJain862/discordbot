@@ -398,7 +398,7 @@ client.on('message', message => {
 client.on('message', message => {
     let bob = 'im '
     let content = message.content.slice(bob.length)
-    let cmd = content.shift().toLowerCase();
+    let cmd = content.toLowerCase();
     
     if(cmd === content) {
         

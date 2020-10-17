@@ -4,7 +4,9 @@ const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
 
 const Discord = require('discord.js')
-const client = new Discord.Client()
+const client = new Discord.Client({
+    disableMentions: 'everyone'
+})
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')

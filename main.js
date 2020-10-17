@@ -256,7 +256,7 @@ client.on('ready', async () => {
 })
 
 const prefix = 'a-'
-const cmember = ['765356807895384072' || '767102341932646431']
+const cmember = ['765356807895384072' , '767102341932646431']
 
 client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);

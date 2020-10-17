@@ -166,8 +166,9 @@ client.on('ready', async () => {
   })
 
   command(client, ['userinfo','whois'], (message) => {
-    const { guild, channel, data, client, permissions } = message
+    const { guild, channel, data, client } = message
     //console.log(guild)
+    
     
 
     const user = message.mentions.users.first() || message.member.user
@@ -204,7 +205,7 @@ client.on('ready', async () => {
       },
       {
           name: 'Key Perms',
-          value: permissions
+          value: member.roles.permissions
       }
       
     )

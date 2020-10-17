@@ -432,6 +432,11 @@ client.on('message', message => {
     }
 
 })
+client.on('message', message => {
+    setTimeout(function(){
+        message.channel.send('BOOO!!!!!')
+      }, 60000);
+})
 
  
 

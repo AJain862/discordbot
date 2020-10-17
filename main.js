@@ -12,7 +12,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 const client1 = new Discord.Client({
-    disableMentions: ['everyone', 'here']
+    disableMentions: 'everyone'
 });
 
 const config = require('./config.json')

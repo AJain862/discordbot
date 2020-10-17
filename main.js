@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
-const deleted = new Discord.Message(clientdatachannel);
+
 const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'

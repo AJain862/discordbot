@@ -424,7 +424,14 @@ client.on('message', message => {
         return
     }
 })
+client.on('message', message => {
+    let pre = 'say '
+    let cont = message.content.slice(pre.length)
+    if(message.content.startsWith('say ')) {
+        message.channel.send(`${cont}\n\n -${message.member.user.tag}`)
+    }
 
+})
 
  
 

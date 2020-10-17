@@ -256,10 +256,11 @@ client.on('ready', async () => {
 })
 
 const prefix = 'a-'
-const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
+
 
 
 client.on('message', (message) => {
+    const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
@@ -275,6 +276,7 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
+    const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {

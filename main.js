@@ -397,12 +397,12 @@ client.on('message', message => {
 })
 client.on('message', message => {
     let bob = 'im '
-    let content = message.content.slice(bob.length)
+    let joe = message.content.slice(bob.length)
     
     
     if(message.content.startsWith('im ')) {
         
-        message.channel.send(`hi ${content}, im your bot `)
+        message.channel.send(`hi ${joe}, im your bot `)
     } else {
         return
     }

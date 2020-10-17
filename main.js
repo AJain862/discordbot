@@ -10,6 +10,7 @@ const translate = require('@k3rn31p4nic/google-translate-api');
 
 const Discord = require('discord.js')
 const client = new Discord.Client().setMaxListeners(50)
+({ disableMentions: 'everyone' });
 
 const config = require('./config.json')
 const command = require('./command')
@@ -467,7 +468,7 @@ client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        if(args === '@everyone') return message.channel.send("This is a message that can't ping with @here", { disableMentions: "everyone" });
+        
             if (args) {
             let content = args
             

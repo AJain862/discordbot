@@ -260,12 +260,12 @@ const prefix = 'a-'
 
 
 client.on('message', (message) => {
-    const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
+    const cmember = message.guild.roles.cache.find(role => role.name === '[—Community Members—]')
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
         if(message.author.bot) return
-        if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
+        if(!cmember) return message.reply(`Cannot find role:[-Community Member-]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {

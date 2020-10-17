@@ -466,6 +466,14 @@ client.on('message', message => {
         message.channel.send('https://discord.com/oauth2/authorize?client_id=761283809144471552&scope=bot&permissions=2146958847')
     }
 })
+client.on('message', message => {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'win') {
+        message.channel.send('https://media.discordapp.net/attachments/750221276265709568/767117444870307870/Untitled_design_2.png')
+
+    }
+})
 
  
 

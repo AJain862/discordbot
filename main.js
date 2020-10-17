@@ -173,6 +173,7 @@ client.on('ready', async () => {
     const member = guild.members.cache.get(user.id)
 
     const embed = new Discord.MessageEmbed()
+    .setColor('RANDOM')
     .setAuthor(`User info for ${user.username}`, user.displayAvatarURL())
     .setThumbnail(message.member.user.displayAvatarURL())
     .addFields(
@@ -200,6 +201,10 @@ client.on('ready', async () => {
         name: 'Roles',
         value: member.roles.cache.size - 1,
       },
+      {
+          name: 'Key Perms',
+          value: member.permissions
+      }
       
     )
 

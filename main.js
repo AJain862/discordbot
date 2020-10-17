@@ -11,10 +11,6 @@ const translate = require('@k3rn31p4nic/google-translate-api');
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
-const client1 = new Discord.Client({
-    disableMentions: 'everyone'
-});
-
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
@@ -466,16 +462,13 @@ client.on('message', async message => {
         }
 })
 
-client1.on('message', message => {
-    
+client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        
-            if (args) {
+        if(args)
+        if (args) {
             let content = args
-            
-            
             message.channel.send(content)
         }
         else{

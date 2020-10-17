@@ -202,10 +202,6 @@ client.on('ready', async () => {
       {
         name: 'Roles',
         value: member.roles.cache.size - 1,
-      },
-      {
-          name: 'Key Perms',
-          value: member.role.permissions
       }
       
     )

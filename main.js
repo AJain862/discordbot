@@ -387,12 +387,20 @@ client.on('message', async message => {
         }
 })
 client.on('message', message => {
-    if(message.content.toLowerCase() === 'hello ark bot') {
+    if(message.content.toLowerCase() === 'hi ark bot') {
         let person = message.author.username
         message.channel.send(`hi ${person}`)
         
     } else{
         return
+    }
+})
+client.on('message', message => {
+    let bob = 'im'
+    let args = message.content.slice(bob.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'joe') {
+        message.channel.send('oafjaoifdjaiofj')
     }
 })
 

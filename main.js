@@ -388,7 +388,8 @@ client.on('message', async message => {
 })
 client.on('message', message => {
     if(message.content.toLowerCase() === 'hello ark bot') {
-        message.channel.send('hi')
+        let person = message.author.username
+        message.channel.send(`hi ${person}`)
         
     } else{
         return

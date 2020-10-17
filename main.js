@@ -256,7 +256,8 @@ client.on('ready', async () => {
 })
 
 const prefix = 'a-'
-const cmember = ['765356807895384072' , '767102341932646431']
+const cmember = '765356807895384072'
+const cmember1 = '767102341932646431'
 
 client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
@@ -266,7 +267,7 @@ client.on('message', (message) => {
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
-        message.channel.createOverwrite(cmember, {
+        message.channel.createOverwrite(cmember1, {
             SEND_MESSAGES: false
         }, `lock requested`);
     } 
@@ -281,7 +282,7 @@ client.on('message', (message) => {
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
-        message.channel.createOverwrite(cmember, {
+        message.channel.createOverwrite(cmember1, {
             SEND_MESSAGES: null
             
         }, `unlock requested`);

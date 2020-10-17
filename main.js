@@ -174,6 +174,7 @@ client.on('ready', async () => {
 
     const embed = new Discord.MessageEmbed()
     .setAuthor(`User info for ${user.username}`, user.displayAvatarURL())
+    .setThumbnail(message.member.user.displayAvatarURL())
     .addFields(
       {
         name: 'User tag',
@@ -198,7 +199,8 @@ client.on('ready', async () => {
       {
         name: 'Roles',
         value: member.roles.cache.size - 1,
-      }
+      },
+      
     )
 
 

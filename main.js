@@ -387,7 +387,7 @@ client.on('message', async message => {
         }
 })
 client.on('message', message => {
-    if(message === 'hello') {
+    if(message.content.toLowerCase('hello')) {
         message.channel.send('hi')
     }
 })

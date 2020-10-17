@@ -9,7 +9,7 @@ const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
 
 const Discord = require('discord.js')
-const client = new Discord.Client()
+const client = new Discord.Client().setMaxListeners(50)
 
 const config = require('./config.json')
 const command = require('./command')
@@ -463,13 +463,15 @@ client.on('message', async message => {
 })
 
 client.on('message', async message => {
+    
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
-        
-        if (args) {
+        if(args === '@everyone') return message.channel.send("This is a message that can't ping with @here", { disableMentions: "everyone" });
+            if (args) {
             let content = args
-            if(content === message.mentions.first('everyone')) return message.reply('NOPE!')
+            
+            
             message.channel.send(content)
         }
         else{

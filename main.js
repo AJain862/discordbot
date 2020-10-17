@@ -399,7 +399,7 @@ client.on('message', message => {
     let bob = 'im '
     let args = message.content.slice(bob.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'joe') {
+    if(cmd === args) {
         let content = message.content.slice(bob.length)
         message.channel.send(`hi ${content}, im your bot `)
     }

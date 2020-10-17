@@ -177,7 +177,7 @@ client.on('ready', async () => {
     const embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setAuthor(`User info for ${user.username}`, user.displayAvatarURL())
-    .setThumbnail(message.member.user.displayAvatarURL())
+    .setThumbnail(user.displayAvatarURL())
     .addFields(
       {
         name: 'User tag',

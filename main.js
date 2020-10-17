@@ -7,6 +7,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'
 })
+
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')
@@ -35,7 +36,9 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
   bye(client)
+  
   command(client, 'ban', message => {
+    if(message.author.bot) return
       const { member, mentions } = message
       const tag = `<@${member.id}>`
       if(
@@ -58,6 +61,7 @@ client.on('ready', async () => {
   })
 
   command(client, 'kick', message => {
+    if(message.author.bot) return
     const { member, mentions } = message
     const tag = `<@${member.id}>`
     if(
@@ -211,7 +215,7 @@ client.on('ready', async () => {
 
   command(client, ['cc', 'clearchannel'], (message) => {
     const { member, mentions } = message
-    
+    if(message.author.bot) return
     const tag = `<@${member.id}>`
   
       
@@ -228,9 +232,11 @@ client.on('ready', async () => {
   })
 
   command(client, 'nitro', (message) => {
+    if(message.author.bot) return
       message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb')
   })
   command(client, 'youtube', (message) => {
+    if(message.author.bot) return
     message.channel.send('EVERYONE SUB TO THESE CHANNEL RIGHT NOW https://www.youtube.com/channel/UCXRiJN3oM8m7f4VEQn2WXLQ https://www.youtube.com/channel/UC90Ag_otCdOUZfkqoQ202HA https://www.youtube.com/channel/UCespFobOYUasa9gBKYdvCbA https://www.youtube.com/channel/UCQvYT2WC9Ub7vvjV_-oOLwQ https://www.youtube.com/channel/UC49qUd_YFnpkx_-A7NVSKaA?view_as=subscriber')
 })
    
@@ -246,6 +252,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'lock') {
+        if(message.author.bot) return
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
@@ -260,6 +267,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {
+        if(message.author.bot) return
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
@@ -283,6 +291,7 @@ client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
+        if(message.author.bot) return
         if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         if(role){
@@ -311,6 +320,7 @@ client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unmute') {
+        if(message.author.bot) return
         if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         if(role){
@@ -338,6 +348,7 @@ client.on('message', (message) => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'slow') {
+        if(message.author.bot) return
         const { channel } = message
         
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
@@ -353,6 +364,7 @@ client.on('message', (message) => {
 })
 client.on("message", async message => {
     if (message.content === "a-meme") {
+        if(message.author.bot) return
       const random = new Random();
           let data = await random.getMeme()
       message.channel.send(data)
@@ -361,16 +373,19 @@ client.on("message", async message => {
 
   client.on("message", async message => {
     if (message.content === "a-joke") {
+        if(message.author.bot) return
       const random = new Random();
           let data = await random.getJoke()
       message.channel.send(data)
     }
   });
 client.on('message', async message => {
+    
     const { MessageEmbed } = require('discord.js');
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'translate') {
+        if(message.author.bot) return
         try {
             if (args.length < 2) {
               return message.reply("Command Usage: `translate <Language> <Text>`")

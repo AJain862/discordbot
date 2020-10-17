@@ -205,7 +205,7 @@ client.on('ready', async () => {
       },
       {
           name: 'Key Perms',
-          value: member.roles.permissions
+          value: member.permissions
       }
       
     )

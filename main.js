@@ -9,8 +9,11 @@ const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
 
 const Discord = require('discord.js')
-const client = new Discord.Client().setMaxListeners(50)
-({ disableMentions: 'everyone' });
+const client = new Discord.Client()
+
+const client1 = new Discord.Client({
+    disableMentions: ['everyone', 'here']
+});
 
 const config = require('./config.json')
 const command = require('./command')
@@ -463,7 +466,7 @@ client.on('message', async message => {
         }
 })
 
-client.on('message', async message => {
+client1.on('message', message => {
     
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();

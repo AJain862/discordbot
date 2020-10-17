@@ -454,6 +454,14 @@ client.on('message', message => {
         
 
 })
+client.on('message', message => {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'invite') {
+        if(message.author.bot) return 
+        message.channel.send('https://discord.com/oauth2/authorize?client_id=761283809144471552&scope=bot&permissions=2146958847')
+    }
+})
 
  
 

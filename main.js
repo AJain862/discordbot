@@ -402,7 +402,7 @@ client.on('message', message => {
     
     if(message.content.startsWith('im ')) {
         
-        message.channel.send(`hi ${joe}, im your bot `)
+        message.channel.send(`hi ${joe}, im the official ArK bot `)
     } else {
         return
     }

@@ -396,7 +396,7 @@ client.on('message', message => {
     }
 })
 client.on('message', message => {
-    let bob = 'im'
+    let bob = 'im '
     let args = message.content.slice(bob.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'joe') {

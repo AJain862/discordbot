@@ -397,17 +397,19 @@ client.on('message', message => {
 })
 client.on('message', message => {
     let bob = 'im '
-    let joe = message.content.slice(bob.length)
+    let content = message.content.slice(bob.length)
     
     
-    if( === content) {
+    if(message.content.startsWith('im ')) {
         
         message.channel.send(`hi ${content}, im your bot `)
+    } else {
+        return
     }
 })
 
 
- afadfopakpofkadk
+ 
 
 
 /*client.on('message', (message) => {

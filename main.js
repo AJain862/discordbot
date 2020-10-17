@@ -256,8 +256,8 @@ client.on('ready', async () => {
 })
 
 const prefix = 'a-'
-const cmember = '765356807895384072'
-const cmember1 = '767102341932646431'
+const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
+
 
 client.on('message', (message) => {
     let args = message.content.slice(prefix.length).trim().split(/ + /g);

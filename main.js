@@ -276,7 +276,7 @@ client.on('message', (message) => {
 
 
 client.on('message', (message) => {
-    const cmember = message.guild.roles.cache.find(role => role.name === '[--Community Member--]')
+    const cmember = message.guild.roles.cache.find(role => role.name === '[—Community Members—]')
     let args = message.content.slice(prefix.length).trim().split(/ + /g);
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unlock') {

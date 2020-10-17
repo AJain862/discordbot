@@ -96,7 +96,7 @@ client.on('ready', async () => {
       message.channel.send(`
     These are my supported commands:
 
-**a-help** - Displays the help menu
+\`**a-help**\` - Displays the help menu
 **a-serverinfo** - Diplays server info
 **a-userinfo** - Displays user info
 **a-servers** - Displays which servers I am in
@@ -108,6 +108,7 @@ client.on('ready', async () => {
 **a-youtube** - Gives you content to watch and subscribe to
 **a-lock/unlock** - Locks/Unlocks a channel
 **a-helpmath** - Gives you math commands
+
 
        
       

@@ -96,18 +96,22 @@ client.on('ready', async () => {
       message.channel.send(`
     These are my supported commands:
 
-\`**a-help**\` - Displays the help menu
-**a-serverinfo** - Diplays server info
-**a-userinfo** - Displays user info
-**a-servers** - Displays which servers I am in
-**a-ping** - Displays your ping
-**a-cc** - Bulk Deletes Messages
-**a-kick** - Kicks specified user
-**a-ban** - Bans specified user
-**a-nitro** - GIVES YOU A NITRO
-**a-youtube** - Gives you content to watch and subscribe to
-**a-lock/unlock** - Locks/Unlocks a channel
-**a-helpmath** - Gives you math commands
+\`a-help\` - Displays the help menu
+\`a-serverinfo\` - Diplays server info
+\`a-userinfo\` - Displays user info
+\`a-servers\` - Displays which servers I am in
+\`a-ping\` - Displays your ping
+\`a-cc\` - Bulk Deletes Messages
+\`a-kick\` - Kicks specified user
+\`a-ban\` - Bans specified user
+\`a-nitro\` - GIVES YOU A NITRO
+\`a-youtube\` - Gives you content to watch and subscribe to
+\`a-lock/unlock\` - Locks/Unlocks a channel
+\`a-helpmath\` - Gives you math commands
+\`a-created\` - Tells you when server was created.
+\`say\` - Have the bot repeat what you say(Do not you prefix only say: say hi)
+\`hi ark bot\` - Have a warm greeting from The Official ArK Bot(No Prefix)
+\`a-mute/unmute\` - Mutes/Unmutes a member
 
 
        

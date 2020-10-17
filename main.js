@@ -401,7 +401,7 @@ client.on('message', message => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'joe') {
         let content = message.content
-        message.channel.send(`hi ${args}, im your bot `)
+        message.channel.send(`hi ${content}, im your bot `)
     }
 })
 

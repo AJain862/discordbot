@@ -464,7 +464,7 @@ client.on('message', async message => {
         }
 })
 
-client1.on('message', async message => {
+client.on('message', async message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'say'){
@@ -474,7 +474,7 @@ client1.on('message', async message => {
             message.channel.send(content)
         }
         else{
-            message.reply('Please provide something to say!')
+            message.channel.send('Please provide something to say!')
 
 
         }

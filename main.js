@@ -438,6 +438,8 @@ client.on('message', message => {
     if(cmd === 'created') {
         message.channel.send(`${message.guild.name} was created on ${message.channel.createdAt}`)
 
+    } else {
+        return
     }
         
 

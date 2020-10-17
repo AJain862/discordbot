@@ -459,6 +459,7 @@ client.on('message', message => {
     let cmd = args.shift().toLowerCase();
     if(cmd === 'invite') {
         if(message.author.bot) return 
+        if(!message.member.hasPermission('ADMINISTRATOR'))return message.reply('You do not have permissiont to use this command!')
         message.channel.send('https://discord.com/oauth2/authorize?client_id=761283809144471552&scope=bot&permissions=2146958847')
     }
 })

@@ -267,7 +267,7 @@ client.on('message', (message) => {
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
-        message.channel.createOverwrite(cmember1, {
+        message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false
         }, `lock requested`);
     } 
@@ -282,7 +282,7 @@ client.on('message', (message) => {
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
-        message.channel.createOverwrite(cmember1, {
+        message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: null
             
         }, `unlock requested`);

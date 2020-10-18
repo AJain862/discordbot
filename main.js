@@ -507,7 +507,7 @@ client.on('message', message => {
     if(giveawayPrize) return  message.channel.send('Ok then, I will giveaway nothing');
 
     client.giveawaysManager.start(channel, {
-        time = ms(giveawayDuration),
+        time: ms(giveawayDuration),
         prize: giveawayPrize,
         winnerCount: giveawayWinners,
         hostedBy: client.config.hostedBy ? message.author : null,

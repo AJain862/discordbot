@@ -1,4 +1,6 @@
 {
     
-    "prefix": "a-"
+    "prefix": "a-",
+    "everyoneMention": false,
+    "hostedBy": true
 }

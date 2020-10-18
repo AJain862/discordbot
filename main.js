@@ -1,8 +1,19 @@
 const path = require('path')
 const fs = require('fs')
+const ms = require('ms')
 const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
-
+const { GiveawaysManager } = require('discord-giveaways')
+client.giveawaysManager = new GiveawaysManager(client, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 5000,
+    default: {
+        botsCanWin: false,
+        exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
+        embedColor: '#FF0000',
+        reaction: '🎉'
+    }
+});
 const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'
@@ -475,366 +486,89 @@ client.on('message', message => {
     }
 })
 
- 
-
-
-/*client.on('message', (message) => {
-    const { mentions, member } = message
-    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+client.on('message', message => {
+    let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'mut') {
-        if(!message.member.hasPermission(['BAN_MEMBERS', "MANAGE_MESSAGES"])){
-            message.channel.send('You dont have permission to use that command.')
-        }
-        else {
-            const memberId = mentions.users.first()
-            console.log(memberId)
+    if(cmd === 'giveaway') {
+    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You do not have permission to use this command')
+
+    const channel = message.mentions.channels.first();
+
+    if(!channel) return message.reply('Please provide a channel')
+    
+    let giveawayDuration = args[1]
+    if(!giveawayDuration || isNaN(ms(giveawayDuration))) return message.reply('Please provide a valid giveaway duration!')
+
+    let giveawayWinners = args[2];
+    if(isNaN(giveawayWinners) || (parseInt(giveawayWinners) <- 0)) return message.reply('Please provide a valid number of winners!')
+
+    let giveawayPrize = args.slice(3).join(" ");
+
+    if(giveawayPrize) return  message.channel.send('Ok then, I will giveaway nothing');
+
+    client.giveawaysManager.start(channel, {
+        time = ms(giveawayDuration),
+        prize: giveawayPrize,
+        winnerCount: giveawayWinners,
+        hostedBy: client.config.hostedBy ? message.author : null,
+        messages: {
+        giveaway: (client.config.everyoneMention ? "@everyone\n\n": "")+ "GIVEAWAY", 
+        giveawayEnded: (client.config.everyoneMention ? "@everyone\n\n": "")+ "GIVEAWAY EMBED",
+        timeRemaining: "Time remaining: **{duration}** ",
+        inviteToParticipate: "React with 🎉 to enter",
+        winMessage: "Congrats {winners}, you won **{prize}**",
+        embedFooter: "Giveaway Time!",
+        noWinner: "Could not determine a winner",
+        hostedBy: "Hosted by {user}",
+        winners: "winner(s)",
+        endedAt: "Ends at",
+        units: {
+            seconds: "seconds",
+            minutes: "minutes",
+            hours: "hours",
+            days: "days",
             
-            if(memberId) {
-                
-                
+            pluralS: false,
 
-                
-
-                
-                
-                 
-                //const mutedRole = message.guild.roles.cache.get('765356807928414233');
-                
-                    
-                    //if(mutedRole) {
-                       // member.roles.add(mutedRole)
-                        //message.channel.send(`That user was muted.`)
-                    //}
-                    //else {
-                        //message.channel.send('Muted Role not found')
-                    //}
-                
-            }
-            else {
-                message.channel.send('Please specify someone to ban');
-            }
         }
+    
     }
-})*/
+    })
+    
+message.channel.send(`Giveaway starting in ${channel}`)
 
 
+    
+    }
+})
 
-/*client.on('message', (message) => {
-    let args = message.content.slice(prefix.length).trim().split(/ + /g);
+client.on('message', message => {
+    let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'warn') {
-    async function f() {
-        if(!message.member.hasPermission("ADMINISTRATOR"))return message.reply('You cannot usse this command!')
-        
-        var user = message.mentions.users.first();
+    if(cmd === 'reroll') {
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You do not have permision to use this command')
 
-        if(!user) return message.reply('You did not mention anyone!');
+        if(!args[0]) return message.channel.send('No giveaway ID provided')
+        let giveaway = client.giveawaysManager.giveaways.find((g) => g.prize === args.join(" ")) || client.giveawaysManager.giveaways.find((g) => g.messageID === args[0]);
 
-        var member;
-
-        try {
-            member = await message.guild.members.fetch(user);
-
-
-        }catch(err) {
-            member = null
-        }
-
-        if(!member) return message.reply('This person is not in the server!')
-
-        var reason = args.splice(1).join(' ');
-
-        var channel = message.guild.channels.cache.find(c => c.name === 'general')
-
-        var log = new Discord.MessageEmbed()
-        .setTitle('User Warned')
-        .addField('User:', user, true)
-        .addField('By:', message.author, user)
-        .addField('Reason:', reason)
-        channel.send(log);
-
-        var embed = new Discord.MessageEmbed()
-        .setTitle('You were warned!')
-        .setDescription(reason)
-
-        try{
-            user.send(embed)
-
-        }catch(err) {
-            console.warn(err)
-        }
-        message.channel.send(`**${user}** has been warned by **${message.author}**`)
-
+        if(!giveaway) return message.channel.send("Could not find a giveaway with that ID")
+        client.giveawaysManager.reroll(giveaway.messageID)
+        .then(() => {
+            message.channel.send("Giveaway rerolled")
+        })
+        .catch((e) => {
+            if(e.startsWith(`Giveaway with ID ${giveaway.messageID} is not ended`)){
+                message.channel.send('This giveaway has not ended yet')
+            } else {
+                console.error(e)
+                message.channel.send('An error occured')
+            }
+        })
     }
-}
-})*/
+    
+
+})
+
+
 
 client.login(process.env.token);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*const Discord = require('discord.js');
-
-const client = new Discord.Client();
-
-
-
-const ms = require('ms');
-
-
-/*const fs = require('fs');
-const { send } = require('process');
-
-client.commands = new Discord.Collection();
-
-const commandfiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for (const file of commandfiles) {
-    const command = require(`./commands/${file}`);
-
-    client.commands.set(command.name, command)
-}*/
-
-/*client.on('ready', () => {
-    console.log('The Official ArK Bot is online!');
-    client.user.setActivity('a-help', { type: "PLAYING" })
-        .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
-        .catch(console.error);
-
-})
-
-*/
-
-
-/*command(client, 'servers', message => {
-    message.channel.send
-})
-
-client.on('guildMemberAdd', member => {
-    const welcomeChannel = member.guild.channels.cache.find(ch => ch.name.includes('welcome-leave'));
-    const welcomeText = `Welcome <@${member.user.id}> to ${member.guild.name} enjoy your stay!`
-
-    if (!welcomeChannel) {
-        console.log('could not find welcome channel, so I am making one');
-        member.guild.channels.create('welcome', {
-            type: 'test',
-            position: 0,
-            topic: 'Welcome Channel for New Users',
-            permissionOverwrites: [{
-                id: member.guild.id,
-                allow: ['READ_MESSAGE_HISTORY', 'READ_MESSAGES', 'VIEW_CHANNEL'],
-                deny: ['SEND_MESSAGES']
-            }]
-
-        }).then(console.log('welcome channel created')).catch(console.error);
-    }
-
-    Promise.resolve(welcomeText).then(function (welcomeText) {
-        welcomeChannel.send(welcomeText);
-    })
-})
-
-
-
-
-client.on('message', async (message) => {
-
-    if (message.author.bot) return;
-    if (!message.guild) return;
-
-    var prefix = 'a-';
-    if (!message.content.toLowerCase().startsWith(prefix)) return;
-
-    var args = message.content.split(" ");
-    var cmd = args.shift().slice(prefix.length).toLowerCase();
-    try {
-        var file = require(`./commands/${cmd}.js`);
-        file.run(client, message, args);
-    } catch (err) {
-        console.warn(err);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-       
-
-
-
-
-    
-     
-        
-    
-
-
-
-
-
-
-
-
-
-    /*else
-    if (command === 'mute') {
-        
-        let person = message.guild.member(message.mentions.users.first() || message.guild.member.arguments[1])
-        if(!person) return message.reply('Could not find that user');
-
-        let mainrole = message.guild.roles.find(role => role.name === "guest" );
-        let muterole = message.guild.roles.find(role => role.name === "Muted" );
-
-        if(!muterole) return message.reply('could not find the mute role');
-
-        let time = args[2];
-
-        if(!time){
-            return message.reply('you did not give a time, plz give one k?');
-            
-        }
-        person.removeRole(mainrole.id);
-        person.addRole(muterole.id);
-
-        message.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`);
-
-
-
-
-
-
-
-
-        
-    }*/
-
-
-
-
-
-
-    /*if(command === 'mute'){
-        if (message.member.hasPermission('MUTE_MEMBERS')){
-
-            let person = message.guild.member(message.mentions.users.first() || message.guild.members.args[1])
-
-            if(!person) return message.reply('could not find that user.');
-
-            let mainrole = message.guild.roles.cache.find(role => role.name === 'guest')
-            let muterole = message.guild.roles.cache.find(role => role.name === 'Muted')
-            let time = args[1];
-        
-
-            if (mainrole) {
-                message.
-            } else
-            if(!time){
-                return message.reply('plz enter a time to mute the user for.');
-
-            }
-            person.(mainrole.id);
-            person.permissions.add.role(muterole.id);
-            message.channel.send(`@${person.user.username} has been muted for ${ms(ms(time))}`);
-            setTimeout(function () {
-                person.permissions.add.role(mainrole.id);
-                person.permissions.remove.role(muterole.id);
-                message.channel.send(`@${person.user.username} has been unmuted.`)
-            }, ms(time));
-
-            
-            
-
-            
-
-        } else {
-            message.reply('you don\'t have permession to use this command.')
-        }
-    }*/
-
-
-//})
-
-//client.login(process.env.token);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

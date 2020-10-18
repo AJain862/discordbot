@@ -18,7 +18,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
     default: {
         botsCanWin: false,
         exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
-        embedColor: '#FF0000',
+        embedColor: 'RANDOM',
         reaction: '🎉'
     }
 });

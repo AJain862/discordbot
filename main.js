@@ -31,7 +31,7 @@ const bye = require('./bye')
 const { minArgs } = require('./commands/add')
 const { error } = require('console')
 const { join } = require('path')
-c
+
 client.on('ready', async () => {
   console.log('The client is ready!')
   await mongo().then(mongoose => {

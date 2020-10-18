@@ -4,6 +4,11 @@ const ms = require('ms')
 const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
 const { GiveawaysManager } = require('discord-giveaways')
+
+const Discord = require('discord.js')
+const client = new Discord.Client({
+    disableMentions: 'everyone'
+})
 client.giveawaysManager = new GiveawaysManager(client, {
     storage: "./giveaways.json",
     updateCountdownEvery: 5000,
@@ -14,11 +19,6 @@ client.giveawaysManager = new GiveawaysManager(client, {
         reaction: '🎉'
     }
 });
-const Discord = require('discord.js')
-const client = new Discord.Client({
-    disableMentions: 'everyone'
-})
-
 const config = require('./config.json')
 const command = require('./command')
 const welcome = require('./welcome')

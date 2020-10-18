@@ -504,7 +504,7 @@ client.on('message', message => {
 
     let giveawayPrize = args.slice(3).join(" ");
 
-    if(giveawayPrize) return  message.channel.send('Ok then, I will giveaway nothing');
+    if(!giveawayPrize) return  message.channel.send('Ok then, I will giveaway nothing');
 
     client.giveawaysManager.start(channel, {
         time: ms(giveawayDuration),

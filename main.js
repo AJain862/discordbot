@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'
 })
+const mongo = require('./mongo')
 const path = require('path')
 const fs = require('fs')
 const ms = require('ms')
@@ -30,8 +31,21 @@ const bye = require('./bye')
 const { minArgs } = require('./commands/add')
 const { error } = require('console')
 const { join } = require('path')
+c
 client.on('ready', async () => {
   console.log('The client is ready!')
+  await mongo().then(mongoose => {
+      try {
+          console.log('Connected to mongo!')
+
+      }
+      
+      finally {
+          mongoose.connection.close
+
+      }
+
+  })
   const baseFile = 'command-base.js'
   const commandBase = require(`./commands/${baseFile}`)
   const readCommands = (dir) => {

@@ -2,5 +2,6 @@
     
     "prefix": "a-",
     "everyoneMention": false,
-    "hostedBy": true
+    "hostedBy": true,
+    "mongoPath": "mongodb+srv://ajain:aryav123@cluster0.pv5ni.azure.mongodb.net/arkbotmongo?retryWrites=true&w=majority"
 }

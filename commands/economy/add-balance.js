@@ -7,6 +7,7 @@ module.exports = {
   expectedArgs: "<The target's @> <coin amount>",
   permissionError: 'You must be an administrator to use this command.',
   permissions: 'ADMINISTRATOR',
+  description: 'Gives a user coins.',
   callback: async (message, arguments) => {
     const mention = message.mentions.users.first()
 

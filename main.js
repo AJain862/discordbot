@@ -3,7 +3,7 @@ const client = new Discord.Client({
     disableMentions: 'everyone'
 })
 const mongo = require('./mongo')
-const levels = require('./levels')
+
 const path = require('path')
 const fs = require('fs')
 const ms = require('ms')
@@ -65,7 +65,7 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
   bye(client)
-  levels(client)
+  
   
   command(client, 'ban', message => {
     if(message.author.bot) return

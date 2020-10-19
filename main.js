@@ -589,7 +589,19 @@ client.on('message', message => {
     
 
 })
+client.on('message', message => {
 
+            
+    let swearwords = ['shoot']
+    let foundInText = false;
+    for (var i in swearwords){
+        if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
+    }
+    if (foundInText) {
+        message.delete();
+        message.channel.send('NO SWEARING');
+    }
+})
 
 
 client.login(process.env.token);

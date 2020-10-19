@@ -4,7 +4,7 @@ const welcomeSchema = require('./schemas/welcome-schema')
 const command = require('./command')
 const { DiscordAPIError, User } = require("discord.js")
 
-
+/*
 module.exports = (client) => {
 
     const cache = {}
@@ -99,7 +99,7 @@ module.exports = (client) => {
         
 
     })
-}
+}*/
 
 
 
@@ -122,7 +122,7 @@ module.exports = (client) => {
 
 
 
-/*module.exports = client => {
+module.exports = client => {
     const channelId = '765356808172208154'
     const targetChannelId = '765356808172208152'
 
@@ -153,4 +153,4 @@ module.exports = (client) => {
 
     })
 
-}*/
+}

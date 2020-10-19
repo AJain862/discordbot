@@ -1,4 +1,4 @@
-const add = require('./commands/add')
+const add = require('./commands/math/add')
 const firstMessage = require('./first-message')
 module.exports = (client) => {
     const channelId = '765356808172208152'

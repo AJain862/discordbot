@@ -28,7 +28,7 @@ const command = require('./command')
 const welcome = require('./welcome')
 const roleClaim = require('./role-claim')
 const bye = require('./bye')
-const { minArgs } = require('./commands/add')
+const { minArgs } = require('./commands/math/add')
 const { error } = require('console')
 const { join } = require('path')
 

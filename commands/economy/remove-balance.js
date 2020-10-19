@@ -24,7 +24,7 @@ module.exports = {
     const guildId = message.guild.id
     const userId = mention.id
 
-    const newCoins = await economy.removeCoins(guildId, userId, coins)
+    const newCoins = await economy.addCoins(guildId, userId, coins) * -1
 
     message.reply(
       `You have removed <@${userId}> ${coins} coin(s). They now have ${newCoins} coin(s)!`

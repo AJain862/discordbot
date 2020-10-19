@@ -52,7 +52,7 @@ module.exports = (client) => {
 
     })
     const onJoin = async member => {
-        const [ guild ] = member
+        const { guild } = member
 
         let data = cache[guild.id]
 

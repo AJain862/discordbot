@@ -592,7 +592,7 @@ client.on('message', message => {
 client.on('message', message => {
 
             
-    let swearwords = ['shoot']
+    let swearwords = ['shit', 'fuck', 'ass', 'bitch', 'nigger']
     let foundInText = false;
     for (var i in swearwords){
         if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;

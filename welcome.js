@@ -1,8 +1,58 @@
 const Discord = require('discord.js')
+const mongo = require('./mongo')
+const welcomeSchema = require('./schemas/welcome-schema')
+const command = require('./command')
 const { DiscordAPIError, User } = require("discord.js")
 
 
-module.exports = client => {
+module.exports = (client) => {
+    command(client, 'setWelcom', async (message) => {
+        const { member, channel, content, guild } = message
+        
+        if (member.hasPermissions('ADMINISTRATOR')) return channel.send('You do not have permission to use this command.')
+        await mongo().then(mongoose => {
+            try{
+                await new welcomeSchema({
+                    _id: guild.id,
+                    channelId: channel.id,
+                    text: content,
+                }).save()
+
+
+            }
+            finally {
+                mongoose.connection.close()
+
+            }
+        })
+
+
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*module.exports = client => {
     const channelId = '765356808172208154'
     const targetChannelId = '765356808172208152'
 
@@ -33,4 +83,4 @@ module.exports = client => {
 
     })
 
-}
+}*/

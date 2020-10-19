@@ -6,7 +6,7 @@ const { DiscordAPIError, User } = require("discord.js")
 
 
 module.exports = (client) => {
-    command(client, 'setWelcom', async (message) => {
+    command(client, 'setwelcome', async (message) => {
         const { member, channel, content, guild } = message
         
         if (member.hasPermissions('ADMINISTRATOR')) return channel.send('You do not have permission to use this command.')

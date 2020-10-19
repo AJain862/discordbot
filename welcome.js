@@ -10,7 +10,7 @@ module.exports = (client) => {
         const { member, channel, content, guild } = message
         
         if (member.hasPermissions('ADMINISTRATOR')) return channel.send('You do not have permission to use this command.')
-        await mongo().then(mongoose => {
+        await mongo().then(async(mongoose) => {
             try{
                 await new welcomeSchema({
                     _id: guild.id,

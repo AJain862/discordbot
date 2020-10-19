@@ -10,16 +10,9 @@ const profileSchema = mongoose.Schema({
   userId: reqString,
   coins: {
     type: Number,
-    default: 0,
+    required: true,
   },
-  xp: {
-      type: Number,
-      default: 0,
-  },
-  level: {
-      type: Number,
-      default: 1,
-  },
+  
 })
 
 module.exports = mongoose.model('profiles', profileSchema)

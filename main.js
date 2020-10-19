@@ -66,7 +66,7 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
   bye(client)
-  level(client)
+  
   
   
   command(client, 'ban', message => {

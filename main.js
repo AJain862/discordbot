@@ -5,6 +5,7 @@ const client = new Discord.Client({
 const mongo = require('./mongo')
 
 const path = require('path')
+const level = require('./levels')
 const fs = require('fs')
 const ms = require('ms')
 const config = require('./config.json')
@@ -65,6 +66,7 @@ client.on('ready', async () => {
   welcome(client)
   roleClaim(client)
   bye(client)
+  level(client)
   
   
   command(client, 'ban', message => {

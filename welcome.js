@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const mongo = require('./mongo')
-const welcomeSchema = require('./schemas/welcome-schema')
+
 const command = require('./command')
 const { DiscordAPIError, User } = require("discord.js")
 

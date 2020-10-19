@@ -24,11 +24,17 @@ module.exports = (client) => {
 
         await mongo().then(async(mongoose) => {
             try{
-                await new welcomeSchema({
+                await welcomeSchema.findOneAndUpdate({
+                    _id: guild.id
+                }, {
+
                     _id: guild.id,
                     channelId: channel.id,
                     text: text,
-                }).save()
+                
+                }, {
+                    upsert: true,
+                })
 
 
             }

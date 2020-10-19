@@ -72,16 +72,12 @@ module.exports = (client) => {
             })
         }
 
-        const joinEmbed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setThumbnail(Joinedmember.user.displayAvatarURL())
-            .setTitle(`${Joinedmember.user.tag}`)
-            .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');
+        
         const channelId = data[0]
         const text = data[1]      
         const channel = guild.channels.cache.get(data[0])
         channel.send(text.replace(/<@>/g, `<@${member.id}>`))
-        channel.send(joinEmbed)
+        
 
 
     }
@@ -91,7 +87,17 @@ module.exports = (client) => {
     })
 
     client.on('guildMemberAdd', member => {
+        const channel = guild.channels.cache.get(data[0])
+        const joinEmbed = new Discord.MessageEmbed()
+            .setColor('RANDOM')
+            .setThumbnail(member.user.displayAvatarURL())
+            .setTitle(`${member.user.tag}`)
+            .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');
         onJoin(member)
+        channel.send(joinEmbed)
+        
+        
+
     })
 }
 

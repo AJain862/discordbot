@@ -71,13 +71,13 @@ client.on('ready', async () => {
   
   command(client, 'ban', message => {
     if(message.author.bot) return
-      const { member, mentions } = message
+      const { member, mentions, guild } = message
       const tag = `<@${member.id}>`
       if(
           member.hasPermission('ADMINISTRATOR') || 
           member.hasPermission('BAN_MEMBERS')
           ) {
-              const target = mentions.users.first()
+              const target = mentions.users.first() || member.id
               if (target) {
                   const targetMember = message.guild.members.cache.get(target.id)
                   targetMember.ban()

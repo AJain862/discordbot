@@ -123,13 +123,14 @@ module.exports = (client) => {
 
 
 module.exports = client => {
-    const channelId = '765356808172208154'
-    const targetChannelId = '765356808172208152'
+    
 
 
 
 
     client.on('guildMemberAdd', (Joinedmember) => {
+        
+    const targetChannelId = '765356808172208152'
         const joinEmbed = new Discord.MessageEmbed()
             .setColor('RANDOM')
             .setThumbnail(Joinedmember.user.displayAvatarURL())
@@ -141,10 +142,10 @@ module.exports = client => {
 
 
 
-        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!!`
+        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get((y)=> y.name === 'rules').toString()} and have fun!!!`
 
 
-        const channel = Joinedmember.guild.channels.cache.get(channelId)
+        const channel = Joinedmember.guild.channels.cache.get((x) => x.name === 'the-door')
         try {
             channel.send(message)
             channel.send(joinEmbed)

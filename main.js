@@ -523,6 +523,13 @@ client.on('message', message => {
     let giveawayDuration = args[1]
     if(!giveawayDuration || isNaN(ms(giveawayDuration))) return message.reply('Please provide a valid giveaway duration!')
 
+
+
+
+
+
+
+    
     let giveawayWinners = args[2];
     if(isNaN(giveawayWinners) || (parseInt(giveawayWinners) <- 0)) return message.reply('Please provide a valid number of winners!')
 

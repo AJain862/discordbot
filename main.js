@@ -302,7 +302,7 @@ client.on('message', (message) => {
         message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false,
-            READ_MESSAGES: true
+            
         }, `lock requested`);
     } 
 })
@@ -319,7 +319,7 @@ client.on('message', (message) => {
         message.channel.send('Channel has been unlocked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: null,
-            READ_MESSAGES: true
+            
             
         }, `unlock requested`);
     }

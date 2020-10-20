@@ -605,20 +605,43 @@ client.on('message', message => {
         message.channel.send('NO SWEARING');
     }
 })
-client.on('message', message => {
+bot.on("message", async message => {
+    if(message.author.bot || message.channel.type === "dm") return;
+
+
+    //args system that is very required!!!!
     let messageArray = message.content.split(" ")
-    let cmd = messageArray[0]
-    let args = messageArray.slice(1)
-    if(cmd === 'a-ban') {
-        if(message.author.bot) return
-        if(!message.member.hasPermission("BAN_MEMBERS" || "ADMINISTRATOR")) return message.reply('You do not have permission to use this command')
-        const toBan = message.mentions.users.first() || message.guild.members.cache.get(args[0]) 
-        
-        toBan.ban()
-        message.reply('That user has been banned')
+    let args = messageArray.slice(1);
 
+    let cmd = messageArray[0];
 
+    if(cmd === "a-ban") {
+        let toBan = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
+
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You need permissions!") 
+        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("Bot need permissions!") 
+
+        const reason = args[1] || "There was no reason!";
+
+        toBan.ban({
+            reason: reason
+        })
+        message.channel.send(`${toBan} has been banned from the server!\nReason: ${reason}`)
     }
+
+    if(cmd === "a-unban") {
+        let toBan = await bot.users.fetch(args[0])
+
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You need permissions!") 
+        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("Bot need permissions!") 
+
+        const reason = args[1] || "There was no reason!";
+
+        message.guild.members.unban(toBan, reason)
+
+        message.channel.send(`${toBan} has been unbanned from the server!`)
+    }
+
 })
 
 client.login(process.env.token);

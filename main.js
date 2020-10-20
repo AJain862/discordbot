@@ -612,7 +612,7 @@ client.on('message', message => {
         if(message.author.bot) return
         if(!message.member.hasPermission("BAN_MEMBERS" || "ADMINISTRATOR")) return message.reply('You do not have permission to use this command')
         const toBan = message.mentions.users.first() || message.guild.members.cache.get(args[0]) 
-        if(!toBan) return message.reply('Who do you wanna ban huh?')
+        
         toBan.ban()
         message.reply('That user has been banned')
 

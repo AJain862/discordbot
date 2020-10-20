@@ -606,9 +606,10 @@ client.on('message', message => {
     }
 })
 client.on('message', message => {
-    let args = message.content.slice(prefix.length).split(" ");
-    let cmd = args.shift().toLowerCase();
-    if(cmd === 'ban') {
+    let messageArray = message.content.split(" ")
+    let cmd = messageArray[0]
+    let args = messageArray.slice(1)
+    if(cmd === 'a-ban') {
         if(message.author.bot) return
         if(!message.member.hasPermission("BAN_MEMBERS" || "ADMINISTRATOR")) return message.reply('You do not have permission to use this command')
         const toBan = message.mentions.users.first() || message.guild.members.cache.get(args[0]) 

@@ -1,8 +1,8 @@
 const Discord = require('discord.js')
 
 module.exports = client => {
-    const channelId = '765356808172208154'
-    const targetChannelId = '765356808172208152'
+    const channelId = '751080642640609401'
+    const targetChannelId = '732716744736505977'
     
     
     
@@ -22,17 +22,8 @@ module.exports = client => {
         
         
         const channel = Joinedmember.guild.channels.cache.get(channelId)
-
-        try {
-            channel.send(message)
-            channel.send(joinEmbed)
-
-        }
-        catch(e) {
-            console.log(e)
-
-        }
-       
+        channel.send(message)
+        channel.send(joinEmbed)
         
 
     })

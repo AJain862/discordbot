@@ -637,7 +637,7 @@ client.on("message", async message => {
 
         const reason = args[1] || "There was no reason!";
 
-        message.guild.members.unban(toBan, reason)
+        message.guild.members.unban(toBan)
 
         message.channel.send(`${toBan} has been unbanned from the server!`)
     }

@@ -69,7 +69,7 @@ client.on('ready', async () => {
   
   
   
-  command(client, 'ban', message => {
+  /*command(client, 'ban', message => {
     if(message.author.bot) return
       const { member, mentions, guild } = message
       const tag = `<@${member.id}>`
@@ -77,10 +77,11 @@ client.on('ready', async () => {
           member.hasPermission('ADMINISTRATOR') || 
           member.hasPermission('BAN_MEMBERS')
           ) {
-              const target = mentions.users.first() || member.id
+              const target = mentions.users.first() 
+              const target1 =  
               if (target) {
-                  const targetMember = message.guild.members.cache.get(target.id)
-                  targetMember.ban()
+                  const targetMember = message.guild.members.cache.get(target.id) 
+                targetMember.ban()
                   message.channel.send(`${tag} That user has been banned.`)
 
               } else {
@@ -90,7 +91,7 @@ client.on('ready', async () => {
       }else {
           message.channel.send(`${tag} You do not have permission to use this command`)
       }
-  })
+  })*/
 
   command(client, 'kick', message => {
     if(message.author.bot) return
@@ -604,6 +605,19 @@ client.on('message', message => {
         message.channel.send('NO SWEARING');
     }
 })
+client.on('message', message => {
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'ban') {
+        if(message.author.bot) return
+        if(!message.member.hasPermission("BAN_MEMBERS" || "ADMINISTRATOR")) return message.reply('You do not have permission to use this command')
+        const toBan = message.mentions.users.first() || message.guild.members.cache.get(args[0]) 
+        if(!toBan) return message.reply('Who do you wanna ban huh?')
+        toBan.ban()
+        message.reply('That user has been banned')
 
+
+    }
+})
 
 client.login(process.env.token);

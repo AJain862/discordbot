@@ -452,7 +452,8 @@ client.on('message', async message => {
         }
 })
 client.on('message', message => {
-    let joi = message.content.slice(' ark bot')
+    let joi = ' ark bot'
+    let bob = message.content.slice(bob.length)
     if(message.content.endsWith(' ark bot')) {
         let person = message.author.username
         message.channel.send(`${joi}, ${person}`)

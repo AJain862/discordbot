@@ -452,9 +452,10 @@ client.on('message', async message => {
         }
 })
 client.on('message', message => {
-    if(message.content.toLowerCase() === 'hi ark bot') {
+    let joi = message.content.slice(' ark bot')
+    if(message.content.endsWith(' ark bot')) {
         let person = message.author.username
-        message.channel.send(`hi ${person}`)
+        message.channel.send(`${joi}, ${person}`)
         
     } else{
         return

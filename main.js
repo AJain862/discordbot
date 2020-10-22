@@ -132,7 +132,7 @@ client.on('ready', async () => {
 \`a-help\` - Displays the help menu
 \`a-serverinfo\` - Diplays server info
 \`a-userinfo\` - Displays user info
-\`a-servers\` - Displays which servers I am in
+\`a-members\` - Displays how many members are in the server
 \`a-ping\` - Displays your ping
 \`a-cc\` - Bulk Deletes Messages
 \`a-kick\` - Kicks specified user

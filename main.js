@@ -248,7 +248,7 @@ client.on('ready', async () => {
     message.channel.send(`PONG! ${client.ws.ping}ms`)
   })
 
-  command(client, 'servers', (message) => {
+  command(client, 'members', (message) => {
     const { guild } = message
       message.channel.send(
         `${guild.name} has a total of ${guild.memberCount} members`

@@ -249,11 +249,11 @@ client.on('ready', async () => {
   })
 
   command(client, 'servers', (message) => {
-    client.guilds.cache.forEach((guild) => {
+    const { guild } = message
       message.channel.send(
         `${guild.name} has a total of ${guild.memberCount} members`
       )
-    })
+    
   })
 
   command(client, ['cc', 'clearchannel'], (message) => {

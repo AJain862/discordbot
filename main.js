@@ -484,7 +484,7 @@ client.on('message', message => {
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'created') {
-        message.channel.send(`${message.guild.name} was created on ${message.channel.createdAt}`)
+        message.channel.send(`${message.guild.name} was created on ${message.guild.createdAt}`)
 
     } else {
         return

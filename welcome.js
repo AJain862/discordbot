@@ -128,7 +128,7 @@ module.exports = client => {
 
 
 
-
+try{
     client.on('guildMemberAdd', (Joinedmember) => {
         const joinEmbed = new Discord.MessageEmbed()
             .setColor('RANDOM')
@@ -147,10 +147,13 @@ module.exports = client => {
         const channel = Joinedmember.guild.channels.cache.get(channelId)
         
         
-
-
+    
+    
 
 
     })
+} catch(e) {
+    console.log(e)
+}
 
 }

@@ -623,6 +623,7 @@ client.on("message", async message => {
     let cmd = messageArray[0];
 
     if(cmd === "a-ban") {
+        try {
         let toBan = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
 
         if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You need permissions!") 
@@ -634,8 +635,11 @@ client.on("message", async message => {
             reason: reason
         })
         message.channel.send(`${toBan} has been banned from the server!\nReason: ${reason}`)
-    }
-
+    }catch(e){
+        console.log(e)
+    } 
+}
+    
     if(cmd === "a-unban") {
         let toBan = await client.users.fetch(args[0])
 

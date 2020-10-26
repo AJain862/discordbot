@@ -8,7 +8,7 @@ module.exports = client => {
     
     client.on('guildMemberRemove', (Joinedmember) => {
         const joinEmbed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#f5f542')
             .setThumbnail(Joinedmember.user.displayAvatarURL())
             .setTitle(`${Joinedmember.user.tag}`)
             .setDescription('Bye, Have a great time still. Hope you come back :slight_smile:');

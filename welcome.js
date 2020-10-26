@@ -131,7 +131,7 @@ module.exports = client => {
 try{
     client.on('guildMemberAdd', (Joinedmember) => {
         const joinEmbed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#02f533')
             .setThumbnail(Joinedmember.user.displayAvatarURL())
             .setTitle(`${Joinedmember.user.tag}`)
             .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');

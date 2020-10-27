@@ -141,7 +141,7 @@ module.exports = client => {
 
 
 
-        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!!`
+        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the #rules and have fun!!!`
 
 
         const channel = Joinedmember.guild.channels.cache.get(channelId)

@@ -1,8 +1,7 @@
 const Discord = require('discord.js')
 
 module.exports = client => {
-    const channelId = '751080642640609401'
-    const targetChannelId = '732716744736505977'
+    const channelId = '765356808172208154'
     
     
     

@@ -128,7 +128,7 @@ module.exports = client => {
 
 
 
-try{
+
     client.on('guildMemberAdd', (Joinedmember) => {
         const joinEmbed = new Discord.MessageEmbed()
             .setColor('#02f533')
@@ -153,8 +153,6 @@ try{
 
 
     })
-} catch(e) {
-    console.log(e)
-}
+
 
 }

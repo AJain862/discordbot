@@ -669,8 +669,9 @@ client.on("message", async message => {
     if(cmd === "a-roleadd") {
         
         let rolename = message.guild.roles.cache.find(x => x.name === args[1]);
+        if(!rolename) return message.channel.send('boo nope')
 
-        message.channel.send(rolename)
+        message.channel.send(yay)
     
 }
 })

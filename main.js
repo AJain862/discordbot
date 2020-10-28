@@ -662,7 +662,7 @@ client.on('message', (message) =>{
     if(cmd === 'addrole') {
         if(message.author.bot) return
         if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
-        const role = message.guild.roles.cache.find(role => role.name.includes() === args[0])
+        const role = message.guild.roles.cache.find(role => role.name === role.name.includes(args[0]))
         if(role){
             const mention = message.mentions.members.first()
         if(mention){

@@ -656,26 +656,33 @@ client.on("message", async message => {
     }
 
 })
-client.on("message", async message => {
-    if(message.author.bot || message.channel.type === "dm") return;
+client.on('message', (message) =>{
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'addrole') {
+        if(message.author.bot) return
+        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
+        const role = message.guild.roles.cache.find(role => role.name === args[0])
+        if(role){
+            const mention = message.mentions.members.first()
+        if(mention){
+            mention.roles.add(role)
+            message.channel.send(`${mention}, has been muted.`)
 
+        }
+        else {
+            message.reply('This user does not exist.')
+        }
 
-    //args system that is very required!!!!
-    let messageArray = message.content.split(" ")
-    let args = messageArray.slice(1);
-
-    let cmd = messageArray[0];
-
-    if(cmd === "a-roleadd") {
+        }
+        else {
+            message.reply(' Role not found.')
+        }
         
-        let rolename = message.guild.roles.cache.find(x => x.name === args[0]);
-        if(!rolename) return message.channel.send('boo nope')
+        
 
-        const mentions = message.mentions.members.first()
-        if(!mentions) message.channel.send('Please provide a user.')
-        mentions.roles.add(rolename)
-    
-}
+    }
+
 })
 
 

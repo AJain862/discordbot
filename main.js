@@ -714,13 +714,5 @@ client.on('message', (message) =>{
     }
 
 })
-client.on('message', (message) => {
-    let args = message.content.slice(prefix.length).split(" ");
-    let cmd = args.shift().toLowerCase();
-    if(cmd === 'logo') {
-        message.channel.send(':ArKlogo:')
-
-    }
-})
 
 client.login(process.env.token);

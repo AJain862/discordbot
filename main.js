@@ -656,5 +656,26 @@ client.on("message", async message => {
     }
 
 })
+client.on("message", async message => {
+    if(message.author.bot || message.channel.type === "dm") return;
+
+
+    //args system that is very required!!!!
+    let messageArray = message.content.split(" ")
+    let args = messageArray.slice(1);
+
+    let cmd = messageArray[0];
+
+    if(cmd === "a-roleadd") {
+        try {
+        let rolename = message.guild.roles.cache.find(x => x.name.includes(args[0]));
+
+        message.channel.send(rolename)
+    }catch(e){
+        console.log(e)
+    } 
+}
+})
+
 
 client.login(process.env.token);

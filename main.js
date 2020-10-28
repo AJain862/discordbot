@@ -671,7 +671,9 @@ client.on("message", async message => {
         let rolename = message.guild.roles.cache.find(x => x.name === args[0]);
         if(!rolename) return message.channel.send('boo nope')
 
-        message.channel.send(rolename)
+        const mentions = message.mentions.members.first()
+        if(!mentions) message.channel.send('Please provide a user.')
+        mentions.roles.add(rolename)
     
 }
 })

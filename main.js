@@ -661,13 +661,42 @@ client.on('message', (message) =>{
     let cmd = args.shift().toLowerCase();
     if(cmd === 'addrole') {
         if(message.author.bot) return
-        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
+        if(!message.member.hasPermission(['MANAGE_ROLES'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name.includes(args[0]))
         if(role){
             const mention = message.mentions.members.first()
         if(mention){
             mention.roles.add(role)
             message.channel.send(`The role ${role.name} has been added to ${mention}`)
+
+        }
+        else {
+            message.reply('This user does not exist.')
+        }
+
+        }
+        else {
+            message.reply(' Role not found.')
+        }
+        
+        
+
+    }
+
+})
+
+client.on('message', (message) =>{
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'addrole') {
+        if(message.author.bot) return
+        if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have permission to use this command')
+        const role = message.guild.roles.cache.find(role => role.name.includes(args[0]))
+        if(role){
+            const mention = message.mentions.members.first()
+        if(mention){
+            mention.roles.remove(role)
+            message.channel.send(`The role ${role.name} has been removed from ${mention}`)
 
         }
         else {

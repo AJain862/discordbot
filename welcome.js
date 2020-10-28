@@ -123,9 +123,9 @@ module.exports = (client) => {
 
 
 module.exports = client => {
-    const channelId = '765356808172208154'
-    
-
+    const channelId = '751080642640609401'
+    const targetChannelId = '732716744736505977'
+try{
 
 
 
@@ -141,7 +141,7 @@ module.exports = client => {
 
 
 
-        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the #rules and have fun!!!`
+        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!!`
 
 
         const channel = Joinedmember.guild.channels.cache.get(channelId)
@@ -154,5 +154,9 @@ module.exports = client => {
 
     })
 
+}
+catch(e) {
+    console.log(e)
 
+}
 }

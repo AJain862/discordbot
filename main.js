@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'
-})
+}).setMaxListeners(50)
 const mongo = require('./mongo')
 
 const path = require('path')
@@ -13,6 +13,8 @@ client.config = config;
 const { Random } = require("something-random-on-discord")
 const translate = require('@k3rn31p4nic/google-translate-api');
 const { GiveawaysManager } = require('discord-giveaways')
+
+
 
 
 client.giveawaysManager = new GiveawaysManager(client, {
@@ -28,7 +30,7 @@ client.giveawaysManager = new GiveawaysManager(client, {
 
 const command = require('./command')
 const welcome = require('./welcome')
-const roleClaim = require('./role-claim')
+
 const bye = require('./bye')
 const { minArgs } = require('./commands/math/add')
 const { error } = require('console')
@@ -64,7 +66,7 @@ client.on('ready', async () => {
   }
   readCommands('commands')
   welcome(client)
-  roleClaim(client)
+  
   bye(client)
   
   

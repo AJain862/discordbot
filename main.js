@@ -688,7 +688,7 @@ client.on('message', (message) =>{
 client.on('message', (message) =>{
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if(cmd === 'addrole') {
+    if(cmd === 'removerole') {
         if(message.author.bot) return
         if(!message.member.hasPermission('MANAGE_ROLES')) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name.includes(args[0]))

@@ -31,4 +31,5 @@ module.exports = {
       `You have given <@${userId}> ${coins} coin(s). They now have ${newCoins} coin(s)!`
     )
   },
+  requiredRoles: 'Money Master',
 }

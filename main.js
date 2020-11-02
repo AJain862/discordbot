@@ -604,7 +604,7 @@ client.on('message', message => {
 client.on('message', message => {
 
             
-    let swearwords = ['nigger']
+    let swearwords = ['nigger', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
     let foundInText = false;
     for (var i in swearwords){
         if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;

@@ -123,11 +123,7 @@ client.on('ready', async () => {
 
   client.user.setUsername('THE OFFICIAL ArK BOT 2.0')
   client.user.setStatus('dnd')
-  client.user.setPresence({
-      activity: {
-          name: `Use ${prefix}help`
-      }  
-      })
+  
 
   command(client, 'help', message => {
       message.channel.send(`

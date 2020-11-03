@@ -41,7 +41,7 @@ client.on('ready', async () => {
   
   client.user.setPresence({
       status: 'dnd',
-      name: 'Use a-help'
+      activity: 'Use a-help'
   })
   await mongo().then(mongoose => {
       try {

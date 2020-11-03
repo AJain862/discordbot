@@ -121,12 +121,12 @@ client.on('ready', async () => {
 
   const { prefix } = config
 
-  client.user.setStatus('dnd')
+  client.user.setUsername('hi')
   client.user.setPresence({
       activity: {
           name: `Use ${prefix}help`
-      }
-  })
+      }  
+      })
 
   command(client, 'help', message => {
       message.channel.send(`

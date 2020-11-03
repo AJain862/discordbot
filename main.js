@@ -43,8 +43,8 @@ client.on('ready', async () => {
       status:  'dnd',
       activity: {
           
-            type: 'STREAMING',
-            name: `ZOMBSROYALE.IO`,
+            type: 'LISTENING',
+            name: `COLD WATER`,
       },
      
 

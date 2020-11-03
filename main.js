@@ -38,6 +38,7 @@ const { join } = require('path')
 
 client.on('ready', async () => {
   console.log('The client is ready!')
+  client.user.setStatus('dnd')
   await mongo().then(mongoose => {
       try {
           console.log('Connected to mongo!')
@@ -121,8 +122,8 @@ client.on('ready', async () => {
 
   const { prefix } = config
 
-  client.user.setUsername('THE OFFICIAL ArK BOT 2.0')
-  client.user.setStatus('dnd')
+ 
+  
   
 
   command(client, 'help', message => {

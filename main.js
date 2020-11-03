@@ -39,7 +39,7 @@ const { join } = require('path')
 client.on('ready', async () => {
   console.log('The client is ready!')
   client.user.setStatus('dnd')
-  client.user.setPresence('a-help')
+  client.user.setActivity('a-help')
   await mongo().then(mongoose => {
       try {
           console.log('Connected to mongo!')

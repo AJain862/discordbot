@@ -41,10 +41,11 @@ client.on('ready', async () => {
   
   client.user.setPresence({
       activity: {
+          
             type: 'WATCHING',
-            name: 'over Ark Server'
+            name: 'over Ark Server',
       },
-      status: 'dnd',
+      status: 'idle'
 
   })
   await mongo().then(mongoose => {

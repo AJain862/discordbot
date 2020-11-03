@@ -97,6 +97,7 @@ client.on('ready', async () => {
 
   command(client, 'kick', message => {
     if(message.author.bot) return
+    if(message.channel.type === 'dm') return
     const { member, mentions } = message
     const tag = `<@${member.id}>`
     if(
@@ -121,6 +122,7 @@ client.on('ready', async () => {
   const { prefix } = config
 
   
+  client.user.setStatus('dnd')
   client.user.setPresence({
       activity: {
           name: `Use ${prefix}help`
@@ -513,6 +515,7 @@ client.on('message', message => {
 })
 
 client.on('message', message => {
+    if(message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'giveaway') {
@@ -576,6 +579,7 @@ message.channel.send(`Giveaway starting in ${channel}`)
 })
 
 client.on('message', message => {
+    if(message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'reroll') {
@@ -602,6 +606,7 @@ client.on('message', message => {
 
 })
 client.on('message', message => {
+    if(message.channel.type === 'dm') return
 
             
     let swearwords = ['nigger', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
@@ -657,6 +662,7 @@ client.on("message", async message => {
 
 })
 client.on('message', (message) =>{
+    if(message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'addrole') {
@@ -686,6 +692,7 @@ client.on('message', (message) =>{
 })
 
 client.on('message', (message) =>{
+    if(message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if(cmd === 'removerole') {

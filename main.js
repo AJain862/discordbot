@@ -45,7 +45,7 @@ client.on('ready', async () => {
             type: 'WATCHING',
             name: 'over Ark Server',
       },
-      status: 'idle'
+      status: 'invisible'
 
   })
   await mongo().then(mongoose => {

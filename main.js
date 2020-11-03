@@ -121,7 +121,7 @@ client.on('ready', async () => {
 
   const { prefix } = config
 
-  client.user.setUsername('hi')
+  client.user.setUsername('THE OFFICIAL ARK BOT 2.0')
   client.user.setPresence({
       activity: {
           name: `Use ${prefix}help`

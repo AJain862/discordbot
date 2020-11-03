@@ -38,13 +38,13 @@ const { join } = require('path')
 
 client.on('ready', async () => {
   console.log('The client is ready!')
-  
+  const { prefix } = config
   client.user.setPresence({
       status:  'dnd',
       activity: {
           
-            type: 'CUSTOM_STATUS',
-            name: 'INVITE PEOPLE TO ArK, Prefix: a-help',
+            type: 'STREAMING',
+            name: `Zombsroyale.io Use ${prefix}`,
       },
      
 
@@ -130,7 +130,7 @@ client.on('ready', async () => {
     }
 })
 
-  const { prefix } = config
+  
 
  
   

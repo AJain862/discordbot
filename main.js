@@ -40,8 +40,12 @@ client.on('ready', async () => {
   console.log('The client is ready!')
   
   client.user.setPresence({
+      activity: {
+            type: 'WATCHING',
+            name: 'over Ark Server'
+      },
       status: 'dnd',
-      activity: 'Use a-help'
+
   })
   await mongo().then(mongoose => {
       try {

@@ -44,7 +44,7 @@ client.on('ready', async () => {
       activity: {
           
             type: 'STREAMING',
-            name: `Zombsroyale.io Use ${prefix}`,
+            name: `ZOMBSROYALE.IO`,
       },
      
 

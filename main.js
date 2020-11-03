@@ -43,8 +43,8 @@ client.on('ready', async () => {
       status:  'dnd',
       activity: {
           
-            type: 'WATCHING',
-            name: 'over Ark Server',
+            type: 'CUSTOM_STATUS',
+            name: 'INVITE PEOPLE TO ArK, Prefix: a-help',
       },
      
 

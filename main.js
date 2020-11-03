@@ -121,7 +121,6 @@ client.on('ready', async () => {
 
   const { prefix } = config
 
-  
   client.user.setStatus('dnd')
   client.user.setPresence({
       activity: {

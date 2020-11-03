@@ -43,7 +43,7 @@ client.on('ready', async () => {
       status:  'dnd',
       activity: {
           
-            type: 'LISTENING',
+            type: 'CUSTOM_STATUS',
             name: `COLD WATER`,
       },
      

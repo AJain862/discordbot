@@ -44,7 +44,7 @@ client.on('ready', async () => {
       activity: {
           
             type: 'PLAYING',
-            name: `Use ${prefix}`,
+            name: `Use ${prefix}help`,
       },
      
 

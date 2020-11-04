@@ -43,8 +43,8 @@ client.on('ready', async () => {
       status:  'dnd',
       activity: {
           
-            type: 'CUSTOM_STATUS',
-            name: `COLD WATER`,
+            type: 'PLAYING',
+            name: `Use ${prefix}`,
       },
      
 

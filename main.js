@@ -729,4 +729,17 @@ client.on('message', (message) =>{
 
 })
 
+client.on('message', (message) => {
+    if(message.channel.type === 'dm') return
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'aqua'){
+        const embed = new Discord.MessageEmbed()
+        .setColor('#00ffaa')
+        .setTitle('Aqua is the Best :slight_smile:')
+
+    message.channel.send(embed)
+    }
+})
+
 client.login(process.env.token);

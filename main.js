@@ -761,7 +761,7 @@ client.on('message', (message) => {
     if(cmd === 'ark'){
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
-        .setTitle('ArK OP FOR ZCC')
+        .setTitle('ArK OP FOR ZCC :money_mouth:')
 
     message.channel.send(embed)
     }

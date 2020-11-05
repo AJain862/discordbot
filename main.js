@@ -749,7 +749,19 @@ client.on('message', (message) => {
     if(cmd === 'soul'){
         const embed = new Discord.MessageEmbed()
         .setColor('#06ff06')
-        .setTitle('Soul is the best zr leader ever!!! :pepe_ok:')
+        .setTitle('Soul is the best and nicest zr leader ever!!! :smile:')
+
+    message.channel.send(embed)
+    }
+})
+client.on('message', (message) => {
+    if(message.channel.type === 'dm') return
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'ark'){
+        const embed = new Discord.MessageEmbed()
+        .setColor('#e8240e')
+        .setTitle('ArK OP FOR ZCC')
 
     message.channel.send(embed)
     }

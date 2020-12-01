@@ -156,6 +156,13 @@ client.on('ready', async () => {
 \`say\` - Have the bot repeat what you say(Do not you prefix only say: say hi)
 \`hi ark bot\` - Have a warm greeting from The Official ArK Bot(No Prefix)
 \`a-mute/unmute\` - Mutes/Unmutes a member
+\`a-currency\` - Shows currency commands
+\`a-giveaway\` - Starts a giveaway
+\`a-translate\` - Translates language
+\`a-slow\` - Changes the slowmode for a channel
+\`a-meme\` - Shows you a meme
+\`a-joke\` - Makes you laugh with a funny joke
+\`a-ark\` - THERE IS NO NEED TO TELL! YOU PROBABLY ALREADY KNOW!!! 
 
 
        
@@ -310,7 +317,7 @@ client.on('message', (message) => {
     if(cmd === 'lock') {
         if(message.author.bot) return
         if(!cmember) return message.reply(`Cannot find role:[-Community Member-]`)
-        if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
+        if(!message.member.permissions.has('MANAGE_ROLES')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been locked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: false,
@@ -327,7 +334,7 @@ client.on('message', (message) => {
     if(cmd === 'unlock') {
         if(message.author.bot) return
         if(!cmember) return message.reply(`Cannot find role:[--Community Member--]`)
-        if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply('You do not have permission to use this command.')
+        if(!message.member.permissions.has('MANAGE_ROLES')) return message.reply('You do not have permission to use this command.')
         message.channel.send('Channel has been unlocked')
         message.channel.createOverwrite(cmember, {
             SEND_MESSAGES: null,
@@ -351,7 +358,7 @@ client.on('message', (message) =>{
     let cmd = args.shift().toLowerCase();
     if(cmd === 'mute') {
         if(message.author.bot) return
-        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
+        if(!message.member.hasPermission(['MANAGE_ROLES'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         if(role){
             const mention = message.mentions.members.first()
@@ -380,7 +387,7 @@ client.on('message', (message) =>{
     let cmd = args.shift().toLowerCase();
     if(cmd === 'unmute') {
         if(message.author.bot) return
-        if(!message.member.hasPermission(['BAN_MEMBERS'])) return message.reply('You do not have permission to use this command')
+        if(!message.member.hasPermission(['MANAGE_ROLES'])) return message.reply('You do not have permission to use this command')
         const role = message.guild.roles.cache.find(role => role.name === 'Muted')
         if(role){
             const mention = message.mentions.members.first()
@@ -616,7 +623,7 @@ client.on('message', message => {
     if(message.channel.type === 'dm') return
 
             
-    let swearwords = ['nigger', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
+    let swearwords = ['nigger', 'fuck', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
     let foundInText = false;
     for (var i in swearwords){
         if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
@@ -762,9 +769,10 @@ client.on('message', (message) => {
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
         .setTitle('ArK OP FOR ZCC :money_mouth:')
+        
 
     message.channel.send(embed)
     }
 })
 
-client.login(process.env.token);
+client.login('NzYxMjgzODA5MTQ0NDcxNTUy.X3YWzA.QmPCKY8VbN3jEDQ8PgxTvqgU9GI');

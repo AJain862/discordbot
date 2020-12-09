@@ -785,14 +785,18 @@ client.on('message', (message) => {
         .setTitle('Application form For ArK <a:verifcool:786075816894529546>')
         .addFields({
             name: 'Region:',
+            value: ' '
         },
         {
-            name: 'Do you fit Disocrd TOS?'
+            name: 'Do you fit Disocrd TOS?',
+            value: ' '
         },
         {
-            name: 'Activity On Average:'
+            name: 'Activity On Average:',
+            value: ' '
         },{
-            name: 'Screenshot Of Stats'
+            name: 'Screenshot Of Stats',
+            value: ' '
         }
         )
         message.channel.send(embed)

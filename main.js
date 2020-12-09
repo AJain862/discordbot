@@ -785,18 +785,18 @@ client.on('message', (message) => {
         .setTitle('Application form For ArK <a:verifcool:786075816894529546>')
         .addFields({
             name: 'Region:',
-            value: ' '
+            value: 'US West, US East, Asia, EU'
         },
         {
             name: 'Do you fit Disocrd TOS?',
-            value: ' '
+            value: 'Yes or No'
         },
         {
             name: 'Activity On Average:',
-            value: ' '
+            value: 'How many hours per day do you play zombs and are on Discord?'
         },{
             name: 'Screenshot Of Stats',
-            value: ' '
+            value: 'Send a Screnshot of your ZR Stats.'
         }
         )
         message.channel.send(embed)

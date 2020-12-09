@@ -774,5 +774,29 @@ client.on('message', (message) => {
     message.channel.send(embed)
     }
 })
-
+const prefix2 = '-'
+client.on('message', (message) => {
+    if(message.channel.type === 'dm') return
+    let args = message.content.slice(prefix2.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if(cmd === 'apply'){
+        const embed = new Discord.MessageEmbed()
+        .setColor('#e8240e')
+        .setTitle('Application form For ArK :verifcool:')
+        .addFields({
+            name: 'Region:',
+        },
+        {
+            name: 'Do you fit Disocrd TOS?'
+        },
+        {
+            name: 'Activity On Average:'
+        },{
+            name: 'Screenshot Of Stats'
+        }
+        )
+        message.channel.send(embed)
+    }
+    
+})
 client.login('NzYxMjgzODA5MTQ0NDcxNTUy.X3YWzA.QmPCKY8VbN3jEDQ8PgxTvqgU9GI');

@@ -782,7 +782,7 @@ client.on('message', (message) => {
     if(cmd === 'apply'){
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
-        .setTitle('Application form For ArK <a:verifcool:786075816894529546>')
+        .setTitle('<:ArKlogo:720269961766895676>Application form For ArK <a:verifcool:>')
         .addFields({
             name: 'Region:',
             value: 'US West, US East, Asia, EU'
@@ -793,7 +793,7 @@ client.on('message', (message) => {
         },
         {
             name: 'Activity On Average:',
-            value: 'How many hours per day do you play zombs and are on Discord?'
+            value: 'How many hours per day do you play zombsroyale and are on Discord?'
         },{
             name: 'Screenshot Of Stats',
             value: 'Send a Screnshot of your ZR Stats.'

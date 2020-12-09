@@ -782,7 +782,7 @@ client.on('message', (message) => {
     if(cmd === 'apply'){
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
-        .setTitle('Application form For ArK :verifcool:')
+        .setTitle('Application form For ArK <a:verifcool:786075816894529546>')
         .addFields({
             name: 'Region:',
         },

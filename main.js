@@ -799,6 +799,7 @@ client.on('message', (message) => {
             value: 'Send a Screnshot of your ZR Stats.'
         }
         )
+        .setFooter('Once you have read this form type your answers in the chat and wait till someone accepts you!!!')
         message.channel.send(embed)
     }
     

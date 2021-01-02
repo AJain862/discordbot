@@ -755,7 +755,7 @@ client.on('message', (message) => {
     if (cmd === 'tony') {
         const embed = new Discord.MessageEmbed()
             .setColor('#01f5f5')
-            .setTitle('ah yes, Tony The God')
+            .setTitle('ah yes, Tony The God <a:POG:794979519101927454>')
 
         message.channel.send(embed)
     }

@@ -479,6 +479,7 @@ client.on('message', message => {
     }
 })
 client.on('message', message => {
+    if(message.author.bot) return
     let bob = 'im '
     let joe = message.content.slice(bob.length)
 
@@ -491,6 +492,7 @@ client.on('message', message => {
     }
 })
 client.on('message', message => {
+    if(message.author.bot) return
     let pre = 'say '
     let cont = message.content.slice(pre.length)
     if (message.content.startsWith('say ')) {

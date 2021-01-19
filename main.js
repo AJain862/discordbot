@@ -294,7 +294,7 @@ client.on('ready', async () => {
 
     command(client, 'nitro', (message) => {
         if (message.author.bot) return
-        message.channel.send('https://discord.gift/dGgudJamz5CVAGwjZNDBCTTb')
+        message.channel.send('https://discord.gift/A6rq9qvcN3TnF4qK')
     })
     command(client, 'youtube', (message) => {
         if (message.author.bot) return

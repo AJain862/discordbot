@@ -625,7 +625,7 @@ client.on('message', message => {
     if (message.channel.type === 'dm') return
 
 
-    let swearwords = ['nigger', 'fuck', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
+    let swearwords = ['nigger', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
     let foundInText = false;
     for (var i in swearwords) {
         if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
@@ -815,5 +815,35 @@ client.on('message', (message) => {
             .setFooter('Once you have read this form type your answers in the chat and wait till someone accepts you!!!')
         message.channel.send(embed)
     }
+})
+client.on('message', (message) => {
+    if (message.channel.type === 'dm') return
+    let args = message.content.slice(prefix2.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if (cmd === 'faoifjoaisjfoaijfdaoij') {
+        if(!message.member.hasPermission('ADMINISTRATOR')) return
+        const embed = new Discord.MessageEmbed()
+        .setColor('#e8240e')
+        .setTitle('__ArK Rules__')
+        .addFields({
+            name: 'Rule 1:',
+            value: 'This is what rule 3 is gonna be'
+        },
+            {
+                name: 'Rule 2:',
+                value: 'This is what rule 2 is gonna be'
+            },
+            {
+                name: 'Rule 3:',
+                value: 'This is what rule 3 is gonna be'
+            }, {
+            name: 'Rule 4:',
+            value: 'This is what rule 4 is gonna be'
+        }
+        )
+        .setFooter('Once you have read the rules react with the ArK logo to gain access to the rest of the server!')
+        message.channel.send(embed);
+    }
+
 })
 client.login(process.env.token);

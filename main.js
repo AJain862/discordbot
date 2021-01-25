@@ -834,12 +834,9 @@ client.on('message', (message) => {
                 value: '1. Hate speech will result in immediate removal. For instance bullying or being homophobic and/or racist. In case these violations of this rule in other servers or in DM\'s are broken the violator will be removed, and accountable for there past actions.\n2. Use every channel for there intended purpose, as well do not share your private info. As private info is for yourself only, protect yourself.\n3. Do not spam ping or spam outside of the spam channel. Violators will receive a mute.                 '
             },
             {
-                name: 'Rule 3:',
-                value: 'This is what rule 3 is gonna be'
-            }, {
-            name: 'Rule 4:',
-            value: 'This is what rule 4 is gonna be'
-        }
+                name: 'Malicious actions and intent:',
+                value: '1. Any and every malicious action toward our server and members will result in permanent removal from the server. This includes but is not limited to sending malicious links in Dm\'s or our server. Server raiding/mass pinging, and leaking private information.\n2. No pornographic images, photos, or pictures of any type. As well as no video links or discussion about it, this will result in a kick or ban. Along with this no invites to a nudes or nsfw server or YouTube video links.\n3. Anyone with enough evidence to be proven guilty of the above will receive punishment as necessary.'
+            }, 
         )
         .setFooter('Once you have read the rules react with the ArK logo to gain access to the rest of the server!')
         message.channel.send(embed);

@@ -820,8 +820,8 @@ client.on('message', (message) => {
     if (message.channel.type === 'dm') return
     let args = message.content.slice(prefix2.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if (cmd === 'faoifjoaisjfoaijfdaoij') {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return
+    if (cmd === 'rules') {
+        
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
         .setTitle('__ArK Clan Rules__')

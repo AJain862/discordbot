@@ -824,14 +824,14 @@ client.on('message', (message) => {
         if(!message.member.hasPermission('ADMINISTRATOR')) return
         const embed = new Discord.MessageEmbed()
         .setColor('#e8240e')
-        .setTitle('__ArK Rules__')
+        .setTitle('__ArK Clan Rules__')
         .addFields({
-            name: 'Rule 1:',
-            value: 'This is what rule 3 is gonna be'
+            name: 'Treatment:',
+            value: '1. Be respectful to everyone in the community whether they are in the clan or not. Toxicity will not be tolerated.\n2. Harassment and bullying are not tolerated here. Toxicity bullying and/or harassment inside of our server will result in removal from the server.\n 3. Racism is extremely not tolerated, being racist will get you removed from the server.'
         },
             {
-                name: 'Rule 2:',
-                value: 'This is what rule 2 is gonna be'
+                name: 'Channels:',
+                value: '1. Hate speech will result in immediate removal. For instance bullying or being homophobic and/or racist. In case these violations of this rule in other servers or in DM\'s are broken the violator will be removed, and accountable for there past actions.\n2. Use every channel for there intended purpose, as well do not share your private info. As private info is for yourself only, protect yourself.\n3. Do not spam ping or spam outside of the spam channel. Violators will receive a mute.                 '
             },
             {
                 name: 'Rule 3:',

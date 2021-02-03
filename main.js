@@ -849,7 +849,7 @@ client.on('message', (message) => {
     if (cmd === 'purge'){
         if(message.author.bot) return
         if(!message.member.hasPermission('MANAGE_MESSAGES' || 'ADMINISTRATOR')) return message.reply('You cant purge dummy wait for promo!')
-        message.channel.messages.fetch(4).then(messages => {
+        message.channel.messages.fetch({limit: 4}).then(messages => {
             message.channel.bulkDelete(messages)
 
         })

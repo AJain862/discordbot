@@ -842,22 +842,21 @@ client.on('message', (message) => {
         .setFooter('Once you have read the rules react with the ArK logo to gain access to the rest of the server!')
         message.channel.send(embed);
     }
-    client.on('message', (message) => {
+    client.on('message', async message => {
+
         if (message.channel.type === 'dm') return
     let args = message.content.slice(prefix2.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if (cmd === 'purge'){
-        if(message.author.bot) return
-        if(!message.member.hasPermission('MANAGE_MESSAGES' || 'ADMINISTRATOR')) return message.reply('You cant purge dummy wait for promo!')
-        message.channel.messages.fetch({limit: 4}).then(messages => {
-            message.channel.bulkDelete(messages)
-
+       if(!args[0]) return message.reply('enter something here dummy')
+       if(isNaN(args[0])) return message.reply('it has to be a number idiot')
+    }
         })
         
        
-    }
+    
 
-    })
+    
 
 })
 client.login(process.env.token);

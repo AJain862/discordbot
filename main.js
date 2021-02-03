@@ -849,7 +849,7 @@ client.on('message', (message) => {
     let cmd = args.shift().toLowerCase();
     if (cmd === 'a-purge'){
        
-       message.channel.send(args[0])
+       message.channel.send('hello there')
     }
         })
         

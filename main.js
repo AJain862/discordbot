@@ -845,11 +845,11 @@ client.on('message', (message) => {
     client.on('message', async message => {
 
         if (message.channel.type === 'dm') return
-    let args = message.content.split(" ")
+    let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
-    if (cmd === 'a-purge'){
-       
-       message.channel.send('hello there')
+    if (cmd === 'purge'){
+      
+       message.channel.send('hellow there')
     }
         })
         

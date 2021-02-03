@@ -850,8 +850,8 @@ client.on('message', (message) => {
         if(message.author.bot) return
         if(!message.member.hasPermission('MANAGE_MESSAGES' || 'ADMINISTRATOR')) return message.reply('You cant purge dummy wait for promo!')
         
-        
-        message.channel.bulkDelete(4)
+        const mpurge = message.channel.messages.fetch(4)
+        message.channel.bulkDelete(mpurge)
 
     }
 

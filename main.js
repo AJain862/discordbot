@@ -843,15 +843,13 @@ client.on('message', (message) => {
         message.channel.send(embed);
     }
     client.on('message', (message) => {
-
-     
-    let args = message.content.slice(prefix.length).split(" ");
-    let cmd = args.shift().toLowerCase();
-    if (cmd === 'purge'){
-      
-       message.channel.send('hellow there')
-    }
-        })
+        if (message.channel.type === 'dm') return
+        let args = message.content.slice(prefix.length).split(" ");
+        let cmd = args.shift().toLowerCase();
+        if (cmd === 'clear') {
+            message.channel.send('hello there')
+        }
+    })
         
        
     

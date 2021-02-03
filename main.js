@@ -626,7 +626,7 @@ client.on('message', message => {
     if (message.channel.type === 'dm') return
 
 
-    let swearwords = ['nigger', 'https://cdn.discordapp.com/emojis/748917649169317968.gif?v=1']
+    let swearwords = ['nigger']
     let foundInText = false;
     for (var i in swearwords) {
         if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
@@ -849,10 +849,12 @@ client.on('message', (message) => {
     if (cmd === 'purge'){
         if(message.author.bot) return
         if(!message.member.hasPermission('MANAGE_MESSAGES' || 'ADMINISTRATOR')) return message.reply('You cant purge dummy wait for promo!')
-        
-        const mpurge = message.channel.messages.fetch(4)
-        message.channel.bulkDelete(mpurge)
+        message.channel.messages.fetch(4).then(messages => {
+            message.channel.bulkDelete(messages)
 
+        })
+        
+       
     }
 
     })

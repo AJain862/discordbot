@@ -79,6 +79,7 @@ client.on('ready', async () => {
     welcome(client)
 
     bye(client)
+    
 
 
 
@@ -841,6 +842,20 @@ client.on('message', (message) => {
         .setFooter('Once you have read the rules react with the ArK logo to gain access to the rest of the server!')
         message.channel.send(embed);
     }
+    client.on('message', (message) => {
+        if (message.channel.type === 'dm') return
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
+    if (cmd === 'purge'){
+        if(message.author.bot) return
+        if(!message.member.hasPermission('MANAGE_MESSAGES' || 'ADMINISTRATOR')) return message.reply('You cant purge dummy wait for promo!')
+        const purgen = args[0]
+        const purgen2 = purgen + 1 
+        message.channel.bulkDelete(purgen2)
+
+    }
+
+    })
 
 })
 client.login(process.env.token);

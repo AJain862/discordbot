@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client({
     disableMentions: 'everyone'
-}).setMaxListeners(100)
+}).setMaxListeners(1000000000)
 const mongo = require('./mongo')
 
 const path = require('path')

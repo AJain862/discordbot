@@ -842,9 +842,9 @@ client.on('message', (message) => {
         .setFooter('Once you have read the rules react with the ArK logo to gain access to the rest of the server!')
         message.channel.send(embed);
     }
-    client.on('message', async message => {
+    client.on('message', (message) => {
 
-        if (message.channel.type === 'dm') return
+     
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if (cmd === 'purge'){

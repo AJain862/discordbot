@@ -848,8 +848,7 @@ client.on('message', (message) => {
     let args = message.content.split(" ")
     let cmd = args.shift().toLowerCase();
     if (cmd === 'a-purge'){
-       if(!args[0]) return message.reply('enter something here dummy')
-       if(isNaN(args[0])) return message.reply('it has to be a number idiot')
+       
        message.channel.send(args[0])
     }
         })

@@ -845,9 +845,9 @@ client.on('message', (message) => {
     client.on('message', async message => {
 
         if (message.channel.type === 'dm') return
-    let args = message.content.slice(prefix.length).split(" ");
+    let args = message.content.split(" ")
     let cmd = args.shift().toLowerCase();
-    if (cmd === 'purge'){
+    if (cmd === 'a-purge'){
        if(!args[0]) return message.reply('enter something here dummy')
        if(isNaN(args[0])) return message.reply('it has to be a number idiot')
        message.channel.send(args[0])

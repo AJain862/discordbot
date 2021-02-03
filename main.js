@@ -850,6 +850,7 @@ client.on('message', (message) => {
     if (cmd === 'purge'){
        if(!args[0]) return message.reply('enter something here dummy')
        if(isNaN(args[0])) return message.reply('it has to be a number idiot')
+       message.channel.send(args[0])
     }
         })
         

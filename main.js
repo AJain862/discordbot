@@ -846,6 +846,7 @@ client.on('message', (message) => {
        
     client.on('message', message => {
         if (message.channel.type === 'dm') return
+        if(message.member.hasPermission('MANAGE_CHANNELS')) return
     
     
         let swearwords = ['https://']

@@ -844,22 +844,7 @@ client.on('message', (message) => {
     }
    
        
-    client.on('message', message => {
-        if (message.channel.type === 'dm') return
-        if(message.member.hasPermission('MANAGE_CHANNELS')) return
     
-    
-        let swearwords = ['https://']
-        let foundInText = false;
-        for (var i in swearwords) {
-            if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
-        }
-        if (foundInText) {
-            message.delete();
-            
-        }
-    })
-
     
 
 })

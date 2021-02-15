@@ -123,38 +123,44 @@ module.exports = (client) => {
 
 
 module.exports = client => {
+    
     const channelId = '751080642640609401'
     const targetChannelId = '732716744736505977'
-    const { guild } = message
+   
     
 try{
+    client.on('message', (message) => {
+        const { guild } = message
 
-
-
-    client.on('guildMemberAdd', (Joinedmember) => {
-        const joinEmbed = new Discord.MessageEmbed()
-            .setColor('#02f533')
-            .setThumbnail(Joinedmember.user.displayAvatarURL())
-            .setTitle(`${Joinedmember.user.tag}`)
-            .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');
-
-
-
-
-
-
-        const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!! ArK now has ${guild.memberCount}`
-
-
-        const channel = Joinedmember.guild.channels.cache.get(channelId)
+        client.on('guildMemberAdd', (Joinedmember) => {
+            const joinEmbed = new Discord.MessageEmbed()
+                .setColor('#02f533')
+                .setThumbnail(Joinedmember.user.displayAvatarURL())
+                .setTitle(`${Joinedmember.user.tag}`)
+                .setDescription('Hello! Welcome To ArK ZR clan. Have Fun!');
+    
+    
+    
+    
+    
+    
+            const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!! ArK now has ${guild.memberCount}`
+    
+    
+            const channel = Joinedmember.guild.channels.cache.get(channelId)
+            
+            channel.send(message)
+            channel.send(joinEmbed)
         
-        channel.send(message)
-        channel.send(joinEmbed)
+        
     
     
-
-
+        })
     })
+
+
+
+    
 
 }
 catch(e) {

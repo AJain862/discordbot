@@ -848,14 +848,14 @@ client.on('message', (message) => {
         if (message.channel.type === 'dm') return
     
     
-        let swearwords = ['https://', 'discord.gg']
+        let swearwords = ['https://']
         let foundInText = false;
         for (var i in swearwords) {
             if (message.content.toLowerCase().includes(swearwords[i].toLowerCase())) foundInText = true;
         }
         if (foundInText) {
             message.delete();
-            message.channel.send('No links aloud.');
+            
         }
     })
 

@@ -125,6 +125,7 @@ module.exports = (client) => {
 module.exports = client => {
     const channelId = '751080642640609401'
     const targetChannelId = '732716744736505977'
+    const { guild } = message
     
 try{
 

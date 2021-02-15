@@ -144,7 +144,7 @@ try{
     
     
     
-            const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!! ArK now has ${guild.memberCount}`
+            const message = `Welcome, <@${Joinedmember.id}> to [ArK] Attackerz ZR!!! We hope you have a wonderful time here make sure to read the ${Joinedmember.guild.channels.cache.get(targetChannelId).toString()} and have fun!!! ArK now has ${guild.memberCount} members!`
     
     
             const channel = Joinedmember.guild.channels.cache.get(channelId)

@@ -4,8 +4,9 @@ module.exports = client => {
     const channelId = '751080642640609401'
     
     
-    
     client.on('guildMemberRemove', (Joinedmember) => {
+    const { guild }= Joinedmember
+
         const joinEmbed = new Discord.MessageEmbed()
             .setColor('#f5f542')
             .setThumbnail(Joinedmember.user.displayAvatarURL())
@@ -17,7 +18,7 @@ module.exports = client => {
         
         
 
-        const message = `<@${Joinedmember.id}> left the Server`
+        const message = `<@${Joinedmember.id}> left the Server. ArK now has ${guild.memberCount} members.`
         
         
         const channel = Joinedmember.guild.channels.cache.get(channelId)

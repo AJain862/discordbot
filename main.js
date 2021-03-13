@@ -755,6 +755,18 @@ client.on('message', (message) => {
     if (message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
+    if (cmd === 'toxicz') {
+        const embed = new Discord.MessageEmbed()
+            .setColor('#1409e6')
+            .setTitle('ToxicZ is the Best <a:blob_vibin:748342920905752658>')
+
+        message.channel.send(embed)
+    }
+})
+client.on('message', (message) => {
+    if (message.channel.type === 'dm') return
+    let args = message.content.slice(prefix.length).split(" ");
+    let cmd = args.shift().toLowerCase();
     if (cmd === 'tony') {
         const embed = new Discord.MessageEmbed()
             .setColor('#01f5f5')

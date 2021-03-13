@@ -752,10 +752,12 @@ client.on('message', (message) => {
     }
 })
 client.on('message', (message) => {
+    
     if (message.channel.type === 'dm') return
     let args = message.content.slice(prefix.length).split(" ");
     let cmd = args.shift().toLowerCase();
     if (cmd === 'toxicz') {
+        if(message.author.id !== '792306882681110539') return
         const embed = new Discord.MessageEmbed()
             .setColor('#1409e6')
             .setTitle('ToxicZ is the Best <a:blob_vibin:748342920905752658>')
